@@ -1,11 +1,11 @@
 import React from 'react'
 import { ReactDOM } from 'react-dom'
-import BasicExample from '../components/TabComp'
+import Tabs from '../components/TabComp'
 const BoardGame = () => {
     return (
         <div>
             Gomoku
-            <BasicExample />
+            <Tabs />
         </div>
     )
 }
