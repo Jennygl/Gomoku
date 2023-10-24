@@ -107,7 +107,8 @@ function Tabs() {
 export default Tabs
 
 const Button = styled.button`
-    background-color: #67a045;
+    width: 25;
+    background-color: rgba(103, 160, 69, 0.46);
     border: 1px solid white;
     border-bottom: 0;
     border-radius: 5px 5px 0 0;
@@ -117,17 +118,17 @@ const Button = styled.button`
     }
 `
 const TabSection = styled.div`
-    width: 30vw;
+    width: 540px;
     /* height: 50vh; */
     display: flex;
     margin-right: 10vw;
     margin-left: auto;
 `
 const TabContentSection = styled.div`
-    width: 30vw;
+    width: 540px;
     height: 50vh;
     background-color: #b7b1a8;
-    border: node;
+    border: none;
     display: flex;
     margin-right: 10vw;
     margin-left: auto;
