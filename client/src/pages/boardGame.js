@@ -2,17 +2,15 @@ import React from 'react'
 import { ReactDOM } from 'react-dom'
 import Tabs from '../components/TabComp'
 import DecorComp from '../components/DecorComp'
-import PlayerOne from '../components/PlayerOne'
-import PlayerTwo from '../components/PlayerTwo'
 import styled from 'styled-components'
+import NewGameButton from '../components/NewGameButton'
 const BoardGame = () => {
     return (
         <div>
             <Body>
                 <Tabs />
+                  <NewGameButton />
                 <DecorComp />
-                <PlayerOne />
-                <PlayerTwo />
             </Body>
         </div>
     )
