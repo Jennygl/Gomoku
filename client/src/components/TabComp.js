@@ -1,5 +1,6 @@
 // import Nav from 'react-bootstrap/Nav'
 import styled from 'styled-components'
+import AboutGomoku from './AboutGomoku'
 
 function Tabs() {
     return (
@@ -86,7 +87,7 @@ function Tabs() {
                             aria-labelledby="nav-gomoku-tab"
                             tabindex="0"
                         >
-                            Gomoku
+                            <AboutGomoku />
                         </div>
                         <div
                             class="tab-pane fade"
@@ -133,16 +134,3 @@ const TabContentSection = styled.div`
     margin-right: 10vw;
     margin-left: auto;
 `
-// const StyledNavLink = styled(Nav.Link)`
-//     background-color: #b7b1a8;
-//     color: black;
-//     &.active {
-//         background-color: red;
-//     }
-// `
-// const StyledActiveNavLink = styled(StyledNavLink)`
-//     &.active {
-//         background-color: red; // Change the background color of the active tab
-//         color: #fff; // Change the text color of the active tab
-//     }
-// `
