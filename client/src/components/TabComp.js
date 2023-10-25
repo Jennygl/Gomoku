@@ -1,5 +1,6 @@
 // import Nav from 'react-bootstrap/Nav'
 import styled from 'styled-components'
+import RulesContent from './RulesContent'
 
 function Tabs() {
     return (
@@ -78,6 +79,7 @@ function Tabs() {
                             tabindex="0"
                         >
                             Rules
+                            <RulesContent />
                         </div>
                         <div
                             class="tab-pane fade"

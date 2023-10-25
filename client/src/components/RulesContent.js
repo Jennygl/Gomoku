@@ -3,9 +3,7 @@ import React from 'react'
 const RulesContent = () => {
     return (
         <div>
-            <h3>Rules</h3>
             <ul>
-                <li>The game is typically played on a 20x20 grid</li>
                 <li>
                     Two players take turns to place their pieces on the
                     intersections of the grid lines
