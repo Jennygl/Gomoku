@@ -1,0 +1,12 @@
+{
+  "title": "Gomoku",
+  "settings_heading": "Inställningar",
+  "settings_change_language": "Ändra språk",
+  "settings_language_swedish": "Svenska",
+  "settings_language_english": "Engelska",
+  "rules_heading": "Regler",
+  "rules_text": "Målet med spelet är att få en obruten rad med fem tecken horisontellt, vertikalt eller diagonalt. Du spelar genom att klicka med musen på ett tomt fält på brädet. Sedan är det Spelare 2:s tur (i detta fall Dator). Och så är det din tur igen och så vidare.",
+  "about_heading": "Om Gomoku",
+  "about_text": "Historiska register visar att ursprunget till gomoku kan spåras tillbaka till mitten av 1700-talet under Edo-perioden. Det sägs att den 10:e generationen av Kuwanaya Buemon, en köpman som besökte familjen Nijō, var mycket skicklig i detta spel, som sedan spreds bland folket. Namnet Gomoku kommer från det japanska språket, Go betyder fem, moku är ett motord för bitar. På artonhundratalet introducerades spelet till Storbritannien där det var känt som Go Bang.",
+  "new_game_button": "Nytt spel"
+}
