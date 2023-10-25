@@ -8,7 +8,7 @@ const BoardGame = () => {
         <div>
             Gomoku
             <Tabs />
-            <NewGameButton/>
+            <NewGameButton />
             <DecorComp />
         </div>
     )
