@@ -15,7 +15,7 @@ const TreeImg = styled.img`
     position: absolute;
     right: 3vw;
     bottom: 5vh;
-    background-color: #f2ebeb;
+    /* background-color: #f2ebeb; */
     border: none;
     height: 20vh;
 `

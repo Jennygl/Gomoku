@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { ReactDOM } from 'react-dom'
-import BasicExample from '../components/TabComp'
 import BoardComp from '../components/BoardComp'
 import '../App.css'
 import Tabs from '../components/TabComp'
@@ -14,37 +13,27 @@ const BoardGame = () => {
     const handleBoxClick = (boxIdx) => {
         const updatedBoard = board.map((value, idx) => {
             if (idx === boxIdx) {
-                return xPlaying === true ? "X" : "O";
+                return xPlaying === true ? 'X' : 'O'
             } else {
-                return value;
+                return value
             }
         })
-        setBoard(updatedBoard);
+        setBoard(updatedBoard)
 
-        setXPlaying(!xPlaying);
+        setXPlaying(!xPlaying)
     }
     return (
         <div>
-
-            Gomoku
-            <BasicExample />
-            
-
             <Body>
-            <BoardComp board={board} onClick={handleBoxClick} />
-            <GomokuTitle />
-            <Tabs />
-            <NewGameButton />
-            <DecorComp />
+                <GomokuTitle />
+                <BoardComp board={board} onClick={handleBoxClick} />
                 <Tabs />
-                  <NewGameButton />
+                <NewGameButton />
                 <DecorComp />
             </Body>
-
         </div>
     )
 }
-
 
 export default BoardGame
 
