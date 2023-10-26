@@ -1,5 +1,6 @@
 // import Nav from 'react-bootstrap/Nav'
 import styled from 'styled-components'
+import RulesContent from './RulesContent'
 import AboutGomoku from './AboutGomoku'
 
 function Tabs() {
@@ -90,7 +91,7 @@ function Tabs() {
                             aria-labelledby="nav-rules-tab"
                             tabIndex="0"
                         >
-                            Rules
+                            <RulesContent />
                         </div>
                         <div
                             className="tab-pane fade"
