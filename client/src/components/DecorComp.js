@@ -4,6 +4,7 @@ import Trees from '../assets/trees.png'
 function DecorComp() {
     return (
         <div>
+            {' '}
             <TreeImg src={Trees} alt="Trees" />
         </div>
     )
