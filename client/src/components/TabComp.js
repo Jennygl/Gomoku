@@ -5,7 +5,7 @@ import AboutGomoku from './AboutGomoku'
 function Tabs() {
     return (
         <>
-            <div className="d-flex flex-column">
+            <TabDiv className="d-flex flex-column">
                 <TabSection>
                     <nav>
                         <ul
@@ -112,7 +112,7 @@ function Tabs() {
                         </div>
                     </div>
                 </TabContentSection>
-            </div>
+            </TabDiv>
         </>
     )
 }
@@ -157,4 +157,9 @@ const TabContentSection = styled.div`
     @media (max-width: 992px) {
         width: 80vw;
     }
+`
+const TabDiv = styled.div`
+    position: absolute;
+    top: 5vh;
+    right: 5vw;
 `

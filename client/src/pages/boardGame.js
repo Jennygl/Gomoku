@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { ReactDOM } from 'react-dom'
-import BasicExample from '../components/TabComp'
 import BoardComp from '../components/BoardComp'
 import '../App.css'
 import Tabs from '../components/TabComp'
