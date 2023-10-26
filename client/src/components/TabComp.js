@@ -91,7 +91,6 @@ function Tabs() {
                             aria-labelledby="nav-rules-tab"
                             tabIndex="0"
                         >
-                            Rules
                             <RulesContent />
                         </div>
                         <div

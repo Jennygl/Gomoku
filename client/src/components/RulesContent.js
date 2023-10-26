@@ -3,7 +3,13 @@ import React from 'react'
 const RulesContent = () => {
     return (
         <div>
-            <ul>
+            <ul
+                style={{
+                    margin: '4vh 2vw',
+                    paddingBottom: '10px',
+                    fontFamily: 'Inter'
+                }}
+            >
                 <li>
                     Two players take turns to place their pieces on the
                     intersections of the grid lines
@@ -12,7 +18,6 @@ const RulesContent = () => {
                     One player uses "green tree" pieces, and the other uses
                     "pink tree" pieces
                 </li>{' '}
-                <li>"Green tree" player usually goes first</li>
                 <li>
                     The objective is to be the player to form a continuous
                     sequence of five of their pieces in a row, either
