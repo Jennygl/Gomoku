@@ -30,10 +30,12 @@ const BoardGame = () => {
                 <div className="board-container">
                     {' '}
                     <BoardComp board={board} onClick={handleBoxClick} />
-                    <div>
-                        <Tabs />
-                        <NewGameButton />
-                <DecorComp />
+                    <div className="right-container">
+                        <div className="tab-newgame">
+                            <Tabs />
+                            <NewGameButton />
+                        </div>
+                        <DecorComp />
                     </div>
                 </div>
             </Body>
@@ -57,6 +59,13 @@ const Body = styled.div`
             flex-direction: column;
             justify-content: center;
             align-items: center;
+        }
+    }
+    .tab-newgame {
+        display: flex;
+        flex-direction: column;
+        @media (max-width: 992px) {
+            flex-direction: column-reverse;
         }
     }
 `
