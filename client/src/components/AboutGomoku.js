@@ -33,4 +33,5 @@ const About = styled.div`
     display: flex;
     flex-direction: column;
     margin: 4vh 2vw 1em 2vw;
+    word-break: break-word;
 `

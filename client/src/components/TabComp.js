@@ -9,9 +9,13 @@ function Tabs() {
             <div className="d-flex flex-column">
                 <TabSection>
                     <nav>
-                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <Button
-                                class="nav-link active"
+                        <ul
+                            className="nav nav-tabs nav-justified d-flex flex-column flex-md-row"
+                            id="nav-tab"
+                            role="tablist"
+                        >
+                            <Li
+                                className="nav-item active"
                                 id="nav-timer-tab"
                                 data-bs-toggle="tab"
                                 data-bs-target="#nav-timer"
@@ -20,10 +24,12 @@ function Tabs() {
                                 aria-controls="nav-timer"
                                 aria-selected="true"
                             >
-                                Timer
-                            </Button>
-                            <Button
-                                class="nav-link"
+                                <Link className="nav-link" href="#">
+                                    Timer
+                                </Link>
+                            </Li>
+                            <Li
+                                className="nav-item"
                                 id="nav-rules-tab"
                                 data-bs-toggle="tab"
                                 data-bs-target="#nav-rules"
@@ -32,10 +38,12 @@ function Tabs() {
                                 aria-controls="nav-rules"
                                 aria-selected="false"
                             >
-                                Rules
-                            </Button>
-                            <Button
-                                class="nav-link"
+                                <Link className="nav-link" href="#">
+                                    Rules
+                                </Link>
+                            </Li>
+                            <Li
+                                className="nav-item"
                                 id="nav-gomoku-tab"
                                 data-bs-toggle="tab"
                                 data-bs-target="#nav-gomoku"
@@ -44,10 +52,12 @@ function Tabs() {
                                 aria-controls="nav-gomoku"
                                 aria-selected="false"
                             >
-                                Gomoku
-                            </Button>
-                            <Button
-                                class="nav-link"
+                                <Link className="nav-link" href="#">
+                                    Gomoku
+                                </Link>
+                            </Li>
+                            <Li
+                                className="nav-item"
                                 id="nav-settings-tab"
                                 data-bs-toggle="tab"
                                 data-bs-target="#nav-settings"
@@ -56,47 +66,49 @@ function Tabs() {
                                 aria-controls="nav-settings"
                                 aria-selected="false"
                             >
-                                Settings
-                            </Button>
-                        </div>
+                                <Link className="nav-link" href="#">
+                                    Settings
+                                </Link>
+                            </Li>
+                        </ul>
                     </nav>
                 </TabSection>
                 <TabContentSection>
-                    <div class="tab-content" id="nav-tabContent">
+                    <div className="tab-content" id="nav-tabContent">
                         <div
-                            class="tab-pane fade show active"
+                            className="tab-pane fade show active"
                             id="nav-timer"
                             role="tabpanel"
                             aria-labelledby="nav-timer-tab"
-                            tabindex="0"
+                            tabIndex="0"
                         >
                             Timer
                         </div>
                         <div
-                            class="tab-pane fade"
+                            className="tab-pane fade"
                             id="nav-rules"
                             role="tabpanel"
                             aria-labelledby="nav-rules-tab"
-                            tabindex="0"
+                            tabIndex="0"
                         >
                             Rules
                             <RulesContent />
                         </div>
                         <div
-                            class="tab-pane fade"
+                            className="tab-pane fade"
                             id="nav-gomoku"
                             role="tabpanel"
                             aria-labelledby="nav-gomoku-tab"
-                            tabindex="0"
+                            tabIndex="0"
                         >
                             <AboutGomoku />
                         </div>
                         <div
-                            class="tab-pane fade"
+                            className="tab-pane fade"
                             id="nav-settings"
                             role="tabpanel"
                             aria-labelledby="nav-settings-tab"
-                            tabindex="0"
+                            tabIndex="0"
                         >
                             Settings
                         </div>
@@ -109,8 +121,8 @@ function Tabs() {
 
 export default Tabs
 
-const Button = styled.button`
-    width: 25;
+const Li = styled.li`
+    /* width: 25%; */
     background-color: rgba(103, 160, 69, 0.46);
     border: 1px solid white;
     border-bottom: 0;
@@ -120,19 +132,31 @@ const Button = styled.button`
         background-color: #b7b1a8;
     }
 `
+const Link = styled.a`
+    color: black;
+    text-decoration: none;
+    &:hover {
+        color: black;
+    }
+    &:focus {
+        color: black;
+    }
+`
 const TabSection = styled.div`
-    width: 540px;
-    /* height: 50vh; */
-    display: flex;
-    margin-right: 10vw;
-    margin-left: auto;
+    width: 30vw;
+    @media (max-width: 992px) {
+        width: 80vw;
+    }
 `
 const TabContentSection = styled.div`
-    width: 540px;
+    width: 30vw;
     height: 50vh;
     background-color: #b7b1a8;
     border: none;
     display: flex;
-    margin-right: 10vw;
-    margin-left: auto;
+    overflow: auto;
+    word-break: break-word;
+    @media (max-width: 992px) {
+        width: 80vw;
+    }
 `
