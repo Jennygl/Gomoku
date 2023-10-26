@@ -14,42 +14,50 @@ const BoardGame = () => {
     const handleBoxClick = (boxIdx) => {
         const updatedBoard = board.map((value, idx) => {
             if (idx === boxIdx) {
-                return xPlaying === true ? "X" : "O";
+                return xPlaying === true ? 'X' : 'O'
             } else {
-                return value;
+                return value
             }
         })
-        setBoard(updatedBoard);
+        setBoard(updatedBoard)
 
-        setXPlaying(!xPlaying);
+        setXPlaying(!xPlaying)
     }
     return (
         <div>
-
-            Gomoku
-            <BasicExample />
-            
-
             <Body>
-            <BoardComp board={board} onClick={handleBoxClick} />
-            <GomokuTitle />
-            <Tabs />
-            <NewGameButton />
-            <DecorComp />
-                <Tabs />
-                  <NewGameButton />
+                <GomokuTitle />
+                <div className="board-container">
+                    {' '}
+                    <BoardComp board={board} onClick={handleBoxClick} />
+                    <div>
+                        <Tabs />
+                        <NewGameButton />
+                    </div>
+                </div>
+
                 <DecorComp />
             </Body>
-
         </div>
     )
 }
-
 
 export default BoardGame
 
 const Body = styled.div`
     background-color: #f2ebeb;
     height: 100vh;
-    overflow-y: hidden;
+    overflow-x: hidden;
+    .board-container {
+        display: flex;
+        justify-content: space-evenly;
+    }
+    @media (max-width: 992px) {
+        .board-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    }
 `
