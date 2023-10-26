@@ -6,10 +6,12 @@ import NewGameButton from '../components/NewGameButton'
 const BoardGame = () => {
     return (
         <div>
-            Gomoku
+            <Body>
+            <GomokuTitle />
             <Tabs />
             <NewGameButton />
             <DecorComp />
+            </Body>
         </div>
     )
 }
