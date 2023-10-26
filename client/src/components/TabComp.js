@@ -75,11 +75,11 @@ function Tabs() {
                 <TabContentSection>
                     <div className="tab-content" id="nav-tabContent">
                         <div
-                            class="tab-pane fade show active"
+                            className="tab-pane fade show active"
                             id="nav-timer"
                             role="tabpanel"
                             aria-labelledby="nav-timer-tab"
-                            tabindex="0"
+                            tabIndex="0"
                         >
                             Timer
                         </div>
@@ -88,7 +88,7 @@ function Tabs() {
                             id="nav-rules"
                             role="tabpanel"
                             aria-labelledby="nav-rules-tab"
-                            tabindex="0"
+                            tabIndex="0"
                         >
                             Rules
                         </div>
@@ -97,7 +97,7 @@ function Tabs() {
                             id="nav-gomoku"
                             role="tabpanel"
                             aria-labelledby="nav-gomoku-tab"
-                            tabindex="0"
+                            tabIndex="0"
                         >
                             <AboutGomoku />
                         </div>
@@ -106,7 +106,7 @@ function Tabs() {
                             id="nav-settings"
                             role="tabpanel"
                             aria-labelledby="nav-settings-tab"
-                            tabindex="0"
+                            tabIndex="0"
                         >
                             Settings
                         </div>
@@ -142,8 +142,6 @@ const Link = styled.a`
 `
 const TabSection = styled.div`
     width: 30vw;
-    margin-right: 10vw;
-    margin-left: auto;
     @media (max-width: 992px) {
         width: 80vw;
     }
@@ -154,8 +152,6 @@ const TabContentSection = styled.div`
     background-color: #b7b1a8;
     border: none;
     display: flex;
-    margin-right: 10vw;
-    margin-left: auto;
     overflow: auto;
     word-break: break-word;
     @media (max-width: 992px) {

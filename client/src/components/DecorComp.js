@@ -3,16 +3,21 @@ import styled from 'styled-components'
 import Trees from '../assets/trees.png'
 function DecorComp() {
     return (
-        <div>
+
             <TreeImg src={Trees} alt="Trees" />
-        </div>
+
     )
 }
 
 export default DecorComp
-
+const Wrap =styled.div`
+.tree-style{
+    position: relative;
+    right: 3vw;
+    bottom: 5vh;
+}`
 const TreeImg = styled.img`
-    position: absolute;
+    position: relative;
     right: 3vw;
     bottom: 5vh;
     /* background-color: #f2ebeb; */
