@@ -26,7 +26,9 @@ const BoardGame = () => {
     return (
         <div>
             <Body>
-                <GomokuTitle />
+                <div className="board-title-container">
+                    <GomokuTitle />
+                </div>
                 <div className="board-container">
                     {' '}
                     <BoardComp board={board} onClick={handleBoxClick} />
@@ -52,6 +54,27 @@ const Body = styled.div`
     .board-container {
         display: flex;
         justify-content: space-evenly;
+    }
+    .board-title-container {
+        position: relative;
+        left: 12vw;
+        padding-bottom: 10px;
+        margin-top: 10px;
+        @media (max-width: 1200px) {
+            left: 9vw;
+        }
+        @media (max-width: 1000px) {
+            left: 8vw;
+        }
+        @media (max-width: 992px) {
+            left: 21vw;
+        }
+        @media (max-width: 830px) and (min-width: 700px) {
+            left: 13vw;
+        }
+        @media (max-width: 700px) {
+            left: 11vw;
+        }
     }
     @media (max-width: 992px) {
         .board-container {
