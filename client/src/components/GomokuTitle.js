@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 function GomokuTitle() {
-    return <Title>GOMOKU</Title>
+    return <Title>Gomoku</Title>
 }
 
 export default GomokuTitle

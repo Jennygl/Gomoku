@@ -134,6 +134,7 @@ const Li = styled.li`
 const Link = styled.a`
     color: black;
     text-decoration: none;
+    font-family: 'Inter', sans-serif;
     &:hover {
         color: black;
     }
@@ -151,6 +152,7 @@ const TabContentSection = styled.div`
     width: 30vw;
     height: 50vh;
     background-color: #b7b1a8;
+    font-family: 'Inter', sans-serif;
     border: none;
     display: flex;
     overflow: auto;
