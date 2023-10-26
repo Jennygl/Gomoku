@@ -27,7 +27,8 @@ const BoardGame = () => {
         <div>
             <Body>
                 <GomokuTitle />
-                <div className="test">
+                <div className="board-container">
+                    {' '}
                     <BoardComp board={board} onClick={handleBoxClick} />
                     <div>
                         <Tabs />
@@ -46,19 +47,17 @@ export default BoardGame
 const Body = styled.div`
     background-color: #f2ebeb;
     height: 100vh;
-    .test {
+    overflow-x: hidden;
+    .board-container {
         display: flex;
         justify-content: space-evenly;
     }
-
-    /* overflow-y: hidden; */
-    overflow-x: hidden;
-    @media screen and (max-width: 768px){
-        .test {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+    @media (max-width: 992px) {
+        .board-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
     }
 `

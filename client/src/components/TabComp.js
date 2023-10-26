@@ -142,8 +142,6 @@ const Link = styled.a`
 `
 const TabSection = styled.div`
     width: 30vw;
-    /* margin-right: 10vw;
-    margin-left: auto; */
     @media (max-width: 992px) {
         width: 80vw;
     }
@@ -154,8 +152,6 @@ const TabContentSection = styled.div`
     background-color: #b7b1a8;
     border: none;
     display: flex;
-    /* margin-right: 10vw;
-    margin-left: auto; */
     overflow: auto;
     word-break: break-word;
     @media (max-width: 992px) {
