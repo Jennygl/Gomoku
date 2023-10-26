@@ -8,13 +8,20 @@ import DecorComp from '../components/DecorComp'
 import styled from 'styled-components'
 import NewGameButton from '../components/NewGameButton'
 import GomokuTitle from '../components/GomokuTitle'
+import Ximage from '../assets/player1.png'
+import Oimage from '../assets/player2.png'
+
 const BoardGame = () => {
     const [board, setBoard] = useState(Array(400).fill(null))
     const [xPlaying, setXPlaying] = useState(true)
     const handleBoxClick = (boxIdx) => {
         const updatedBoard = board.map((value, idx) => {
             if (idx === boxIdx) {
-                return xPlaying === true ? 'X' : 'O'
+                return xPlaying === true ? (
+                    <Green src={Ximage} alt="X" />
+                ) : (
+                    <Pink src={Oimage} alt="O" />
+                )
             } else {
                 return value
             }
@@ -91,4 +98,10 @@ const Body = styled.div`
             flex-direction: column-reverse;
         }
     }
+`
+const Green = styled.img`
+    height: 33px;
+`
+const Pink = styled.img`
+    height: 35px;
 `
