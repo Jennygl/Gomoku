@@ -33,10 +33,9 @@ const BoardGame = () => {
                     <div>
                         <Tabs />
                         <NewGameButton />
+                <DecorComp />
                     </div>
                 </div>
-
-                <DecorComp />
             </Body>
         </div>
     )
