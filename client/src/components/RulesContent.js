@@ -4,13 +4,7 @@ import styled from 'styled-components'
 const RulesContent = () => {
     return (
         <Wrap>
-            <ul
-            // style={{
-            //     margin: '4vh 2vw',
-            //     paddingBottom: '10px',
-            //     fontFamily: 'Inter'
-            // }}
-            >
+            <ul>
                 <li>
                     Two players take turns to place their pieces on the
                     intersections of the grid lines
@@ -45,10 +39,9 @@ const RulesContent = () => {
 export default RulesContent
 const Wrap = styled.div`
     ul {
-        margin: 4vh 1vw;
+        margin: 3vh 1vw;
         padding-bottom: 10px;
-        font-family: Inter;
-        line-height: 1.5rem;
+        font-family: 'Inter', sans-serif;
     }
     @media (max-width: 992px) {
         ul {
