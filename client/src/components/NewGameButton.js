@@ -25,6 +25,7 @@ const NEWGAME = styled.div`
     @media (max-width: 992px) {
         .new-game {
             width: 80vw;
+            margin-bottom: 30px;
         }
     }
 `
