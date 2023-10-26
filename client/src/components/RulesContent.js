@@ -1,14 +1,15 @@
 import React from 'react'
+import styled from 'styled-components'
 
 const RulesContent = () => {
     return (
-        <div>
+        <Wrap>
             <ul
-                style={{
-                    margin: '4vh 2vw',
-                    paddingBottom: '10px',
-                    fontFamily: 'Inter'
-                }}
+            // style={{
+            //     margin: '4vh 2vw',
+            //     paddingBottom: '10px',
+            //     fontFamily: 'Inter'
+            // }}
             >
                 <li>
                     Two players take turns to place their pieces on the
@@ -37,8 +38,23 @@ const RulesContent = () => {
                     five in a row, the game is declared a draw.
                 </li>
             </ul>
-        </div>
+        </Wrap>
     )
 }
 
 export default RulesContent
+const Wrap = styled.div`
+    ul {
+        margin: 4vh 1vw;
+        padding-bottom: 10px;
+        font-family: Inter;
+        line-height: 1.5rem;
+    }
+    @media (max-width: 992px) {
+        ul {
+            line-height: 2rem;
+            font-size: 1.2rem;
+            margin: 4vh 4vw;
+        }
+    }
+`
