@@ -8,6 +8,7 @@ import DecorComp from '../components/DecorComp'
 import styled from 'styled-components'
 import NewGameButton from '../components/NewGameButton'
 import GomokuTitle from '../components/GomokuTitle'
+import LanguageSwitch from '../components/language/LanguageSwitch'
 const BoardGame = () => {
     const [board, setBoard] = useState(Array(400).fill(null))
     const [xPlaying, setXPlaying] = useState(true)
@@ -26,7 +27,14 @@ const BoardGame = () => {
     return (
         <div>
             <Body>
-                <GomokuTitle />
+                {/* <GomokuTitle />
+                <TopRightCorner>
+                <LanguageSwitch/>
+                </TopRightCorner> */}
+                <Header>
+                    <GomokuTitle />
+                    <LanguageSwitch />
+                </Header>
                 <div className="board-container">
                     {' '}
                     <BoardComp board={board} onClick={handleBoxClick} />
@@ -61,3 +69,20 @@ const Body = styled.div`
         }
     }
 `
+
+const TopRightCorner = styled.div`
+    position: absolute;
+    top: 20px;
+    right: 20px;
+`
+const Header = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 15px 20px;
+    @media (max-width: 992px) {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+`;

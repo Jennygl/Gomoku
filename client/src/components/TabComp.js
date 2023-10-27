@@ -1,6 +1,7 @@
 // import Nav from 'react-bootstrap/Nav'
 import styled from 'styled-components'
 import AboutGomoku from './AboutGomoku'
+import { SettingsContent } from './SettingsContent'
 
 function Tabs() {
     return (
@@ -108,7 +109,7 @@ function Tabs() {
                             aria-labelledby="nav-settings-tab"
                             tabIndex="0"
                         >
-                            Settings
+                            <SettingsContent/>
                         </div>
                     </div>
                 </TabContentSection>

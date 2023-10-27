@@ -6,9 +6,9 @@ LanguageSwitch.js should be imported in the Settings tab
 
 In your component that is using text of some kind, do following:
 
-- import { useLanguage } from './language/LanguageContext'
-- import se from '../components/language/languages/SE.json'
-- import en from '../components/language/languages/EN.json'
+import { useLanguage } from './language/LanguageContext'
+import se from '../components/language/languages/SE.json'
+import en from '../components/language/languages/EN.json'
 
 Make sure you use the correct path depending on where your component or page is located.
 
