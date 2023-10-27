@@ -1,11 +1,10 @@
 import React from 'react'
+import styled from 'styled-components'
 
 const RulesContent = () => {
     return (
-        <div>
-            <h3>Rules</h3>
+        <Wrap>
             <ul>
-                <li>The game is typically played on a 20x20 grid</li>
                 <li>
                     Two players take turns to place their pieces on the
                     intersections of the grid lines
@@ -14,7 +13,6 @@ const RulesContent = () => {
                     One player uses "green tree" pieces, and the other uses
                     "pink tree" pieces
                 </li>{' '}
-                <li>"Green tree" player usually goes first</li>
                 <li>
                     The objective is to be the player to form a continuous
                     sequence of five of their pieces in a row, either
@@ -34,8 +32,22 @@ const RulesContent = () => {
                     five in a row, the game is declared a draw.
                 </li>
             </ul>
-        </div>
+        </Wrap>
     )
 }
 
 export default RulesContent
+const Wrap = styled.div`
+    ul {
+        margin: 3vh 1vw;
+        padding-bottom: 10px;
+        font-family: 'Inter', sans-serif;
+    }
+    @media (max-width: 992px) {
+        ul {
+            line-height: 2rem;
+            font-size: 1.2rem;
+            margin: 4vh 4vw;
+        }
+    }
+`

@@ -1,5 +1,6 @@
 // import Nav from 'react-bootstrap/Nav'
 import styled from 'styled-components'
+import RulesContent from './RulesContent'
 import AboutGomoku from './AboutGomoku'
 import { SettingsContent } from './SettingsContent'
 
@@ -91,7 +92,7 @@ function Tabs() {
                             aria-labelledby="nav-rules-tab"
                             tabIndex="0"
                         >
-                            Rules
+                            <RulesContent />
                         </div>
                         <div
                             className="tab-pane fade"
@@ -134,6 +135,7 @@ const Li = styled.li`
 const Link = styled.a`
     color: black;
     text-decoration: none;
+    font-family: 'Inter', sans-serif;
     &:hover {
         color: black;
     }
@@ -151,6 +153,7 @@ const TabContentSection = styled.div`
     width: 30vw;
     height: 50vh;
     background-color: #b7b1a8;
+    font-family: 'Inter', sans-serif;
     border: none;
     display: flex;
     overflow: auto;

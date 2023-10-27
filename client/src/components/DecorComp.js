@@ -3,24 +3,24 @@ import styled from 'styled-components'
 import Trees from '../assets/trees.png'
 function DecorComp() {
     return (
-
-            <TreeImg src={Trees} alt="Trees" />
-
+        <Wrap className="d-flex justify-content-end">
+            <TreeImg src={Trees} alt="Trees" className="align-self-end" />
+        </Wrap>
     )
 }
 
 export default DecorComp
-const Wrap =styled.div`
-.tree-style{
+const Wrap = styled.div`
     position: relative;
-    right: 3vw;
-    bottom: 5vh;
-}`
+    width: 30vw;
+    height: 20vh;
+    @media (max-width: 992px) {
+        width: 80vw;
+    }
+`
 const TreeImg = styled.img`
     position: relative;
-    right: 3vw;
-    bottom: 5vh;
-    background-color: #f2ebeb;
+    background-color: none;
     border: none;
-    height: 20vh;
+    height: 15vh;
 `
