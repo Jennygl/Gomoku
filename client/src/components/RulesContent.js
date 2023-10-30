@@ -1,35 +1,36 @@
 import React from 'react'
 import styled from 'styled-components'
+import {useLanguage} from './language/LanguageContext'
+import se from './language/languages/SE.json'
+import en from './language/languages/EN.json'
+
 
 const RulesContent = () => {
+
+  const {language} =useLanguage();
+  const lang = language === 'se' ? se : en;
+
     return (
         <Wrap>
             <ul>
                 <li>
-                    Two players take turns to place their pieces on the
-                    intersections of the grid lines
+                    {lang.rules_1}
                 </li>{' '}
                 <li>
-                    One player uses "green tree" pieces, and the other uses
-                    "pink tree" pieces
+                    {lang.rules_2}
                 </li>{' '}
                 <li>
-                    The objective is to be the player to form a continuous
-                    sequence of five of their pieces in a row, either
-                    horizontally, vertically, or diagonally
+                {lang.rules_3}
                 </li>
                 <li>
                     {' '}
-                    Once a piece is placed on the board, it cannot be moved or
-                    removed
+                    {lang.rules_4}
                 </li>
                 <li>
-                    The game is won when one player successfully forms a line of
-                    five of their pieces in a row
+                {lang.rules_5}
                 </li>
                 <li>
-                    If the entire board is filled, and no player has achieved
-                    five in a row, the game is declared a draw.
+                {lang.rules_6}
                 </li>
             </ul>
         </Wrap>
