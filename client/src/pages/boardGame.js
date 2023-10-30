@@ -116,7 +116,7 @@ const Header = styled.div`
         margin-top: 10px;
         margin-bottom: 10px;
     }
-`;
+`
 
 const GomokuTitleContainer = styled.div`
     @media (max-width: 992px) {
@@ -127,12 +127,19 @@ const GomokuTitleContainer = styled.div`
         margin-top: 10px;
         position: relative;
     }
-`;
+`
 
 const LanguageSwitchContainer = styled.div`
-margin-top: 10px;
+    margin-top: 10px;
 
     @media (max-width: 992px) {
         margin-top: 5px;
     }
-`;
+`
+
+const Green = styled.img`
+    height: 33px;
+`
+const Pink = styled.img`
+    height: 35px;
+`
