@@ -20,4 +20,5 @@ border-radius: 8px;
 border: none;
 padding: 5px;
 width: 100px;
+font-family: 'Inter', sans-serif;
 `
