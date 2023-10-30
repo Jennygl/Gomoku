@@ -1,10 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useLanguage } from './language/LanguageContext'
+import se from '../components/language/languages/SE.json'
+import en from '../components/language/languages/EN.json'
 
 const NewGameButton = () => {
+    const { language } = useLanguage()
+    const lang = language === 'se' ? se : en
     return (
         <NEWGAME>
-            <button className="new-game">New game</button>
+            <button className="new-game">{lang.new_game_button}</button>
         </NEWGAME>
     )
 }
