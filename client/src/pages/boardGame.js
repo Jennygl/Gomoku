@@ -101,6 +101,13 @@ const Body = styled.div`
             align-items: center;
         }
     }
+    .tab-newgame {
+        display: flex;
+        flex-direction: column;
+        @media (max-width: 992px) {
+            flex-direction: column-reverse;
+        }
+    }
 `
 const Header = styled.div`
     display: flex;
