@@ -3,8 +3,13 @@ import styled from 'styled-components'
 import RulesContent from './RulesContent'
 import AboutGomoku from './AboutGomoku'
 import { SettingsContent } from './SettingsContent'
+import { useLanguage } from './language/LanguageContext'
+import se from '../components/language/languages/SE.json'
+import en from '../components/language/languages/EN.json'
 
 function Tabs() {
+    const { language } = useLanguage()
+    const lang = language === 'se' ? se : en
     return (
         <>
             <div className="d-flex flex-column">
@@ -40,7 +45,7 @@ function Tabs() {
                                 aria-selected="false"
                             >
                                 <Link className="nav-link" href="#">
-                                    Rules
+                                    {lang.rules_heading}
                                 </Link>
                             </Li>
                             <Li
@@ -68,7 +73,7 @@ function Tabs() {
                                 aria-selected="false"
                             >
                                 <Link className="nav-link" href="#">
-                                    Settings
+                                    {lang.settings_heading}
                                 </Link>
                             </Li>
                         </ul>
