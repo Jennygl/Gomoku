@@ -7,6 +7,8 @@
   "rules_heading": "Regler",
   "rules_text": "Målet med spelet är att få en obruten rad med fem tecken horisontellt, vertikalt eller diagonalt. Du spelar genom att klicka med musen på ett tomt fält på brädet. Sedan är det Spelare 2:s tur (i detta fall Dator). Och så är det din tur igen och så vidare.",
   "about_heading": "Om Gomoku",
-  "about_text": "Historiska register visar att ursprunget till gomoku kan spåras tillbaka till mitten av 1700-talet under Edo-perioden. Det sägs att den 10:e generationen av Kuwanaya Buemon, en köpman som besökte familjen Nijō, var mycket skicklig i detta spel, som sedan spreds bland folket. Namnet Gomoku kommer från det japanska språket, Go betyder fem, moku är ett motord för bitar. På artonhundratalet introducerades spelet till Storbritannien där det var känt som Go Bang.",
+  "about_gomoku_heading": "Om Gomoku",
+  "about_text_1": "Gomoku, även känt som Fem i Rad, är ett klassiskt strategiskt brädspel som har sina rötter i det antika Kina. Spelets namn, Gomoku, är japanskt, medan kineserna kallar det för Wu Zi Qi. Detta spel är en tävling mellan två spelare där målet är att vara den första att placera fem av sina egna stenar i rad, antingen horisontellt, vertikalt eller diagonalt, på ett rutnät på spelbrädet.",
+  "about_text_2": "Historien om Gomoku kan spåras tillbaka över tusen år i både Kina och Japan. Dess enkelhet och ändå strategiska djup har gjort det till ett populärt tidsfördriv genom århundradena. Gomoku spelades ursprungligen på papper eller skars in i träbräden, men det har sedan dess anpassats för olika plattformar, inklusive datorspel och mobilappar.",
   "new_game_button": "Nytt spel"
 }

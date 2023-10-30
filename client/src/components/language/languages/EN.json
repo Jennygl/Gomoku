@@ -7,6 +7,8 @@
   "rules_heading": "Rules",
   "rules_text": "The goal of the game is to order unbroken row of five signs horizontally, vertically, or diagonally. You play by clicking with mouse on any empty field of the board. Then it is turn of Player 2 (in this case Computer). And then it is your turn again and so on.",
   "about_heading": "About",
-  "about_text": "Historical records indicate that the origins of gomoku can be traced back to the mid-1700s during the Edo period. It is said that the 10th generation of Kuwanaya Buemon, a merchant who frequented the Nijō family, was highly skilled in this game, which subsequently spread among the people. The name Gomoku is from the Japanese language, Go means five, moku is a counter word for pieces. In the nineteenth century, the game was introduced to Britain where it was known as Go Bang.",
+  "about_gomoku_heading": "About Gomoku",
+  "about_text_1": "Gomoku, also known as Five in a Row, is a classic strategy board game that traces its origins to ancient China. The game's name, Gomoku, is Japanese, while the Chinese call it Wu Zi Qi. This game is a two-player contest where the objective is to be the first to place five of one's own stones in a row, either horizontally, vertically, or diagonally, on a gridded game board.",
+  "about_text_2": "The history of Gomoku can be traced back to over a thousand years ago in both China and Japan. Its simplicity and yet strategic depth have made it a popular pastime throughout the centuries. Gomoku was initially played on paper or carved into wooden boards, but it has since been adapted for various platforms, including computer games and mobile apps.",
   "new_game_button": "New game"
 }
