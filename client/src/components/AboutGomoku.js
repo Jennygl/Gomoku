@@ -1,27 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useLanguage } from './language/LanguageContext'
+import se from '../components/language/languages/SE.json'
+import en from '../components/language/languages/EN.json'
 
 function AboutGomoku() {
+
+  const { language } = useLanguage();
+  const lang = language === 'se' ? se : en;
+
     return (
         <About>
-            <h3>About Gomoku</h3>
-            <p>
-                Gomoku, also known as "Five in a Row," is a classic strategy
-                board game that traces its origins to ancient China. The game's
-                name, "Gomoku," is Japanese, while the Chinese call it "Wu Zi
-                Qi." This game is a two-player contest where the objective is to
-                be the first to place five of one's own stones in a row, either
-                horizontally, vertically, or diagonally, on a gridded game
-                board.
+            <h3>{lang.about_gomoku_heading}</h3>
+            <p>{lang.about_text_1}
             </p>
-
             <p>
-                The history of Gomoku can be traced back to over a thousand
-                years ago in both China and Japan. Its simplicity and yet
-                strategic depth have made it a popular pastime throughout the
-                centuries. Gomoku was initially played on paper or carved into
-                wooden boards, but it has since been adapted for various
-                platforms, including computer games and mobile apps
+                {lang.about_text_2}
             </p>
         </About>
     )

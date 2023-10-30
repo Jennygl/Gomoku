@@ -11,6 +11,7 @@ import GomokuTitle from '../components/GomokuTitle'
 import Ximage from '../assets/player1.png'
 import Oimage from '../assets/player2.png'
 
+import LanguageSwitch from '../components/language/LanguageSwitch'
 const BoardGame = () => {
     const [board, setBoard] = useState(Array(400).fill(null))
     const [xPlaying, setXPlaying] = useState(true)
@@ -33,9 +34,18 @@ const BoardGame = () => {
     return (
         <div>
             <Body>
-                <div className="board-title-container">
+                {/* <div className="board-title-container">
                     <GomokuTitle />
                 </div>
+                <LanguageSwitch/> */}
+                <Header>
+                    <GomokuTitleContainer>
+                        <GomokuTitle />
+                    </GomokuTitleContainer>
+                    <LanguageSwitchContainer>
+                        <LanguageSwitch />
+                    </LanguageSwitchContainer>
+                </Header>
                 <div className="board-container">
                     {' '}
                     <BoardComp board={board} onClick={handleBoxClick} />
@@ -91,14 +101,42 @@ const Body = styled.div`
             align-items: center;
         }
     }
-    .tab-newgame {
-        display: flex;
+`
+const Header = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px 20px;
+    margin: 3px 0px 50px 20px;
+
+    @media (max-width: 992px) {
         flex-direction: column;
-        @media (max-width: 992px) {
-            flex-direction: column-reverse;
-        }
+        text-align: center;
+        align-items: center;
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 `
+
+const GomokuTitleContainer = styled.div`
+    @media (max-width: 992px) {
+        margin-bottom: 10px;
+    }
+
+    @media (min-width: 993px) {
+        margin-top: 10px;
+        position: relative;
+    }
+`
+
+const LanguageSwitchContainer = styled.div`
+    margin-top: 10px;
+
+    @media (max-width: 992px) {
+        margin-top: 5px;
+    }
+`
+
 const Green = styled.img`
     height: 33px;
 `
