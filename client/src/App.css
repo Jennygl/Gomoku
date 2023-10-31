@@ -1,48 +1,3 @@
-
-
- .box {
-   background-color: white;
-   width: 1rem;
-   height: 1rem;
-   border: 1px solid #000;
-   display: flex;
-   justify-content: center;
-   align-items: center;
- }
-
- .board {
-   display: grid;
-   grid-template-columns: repeat(20, 1fr);
-   margin-bottom: 2rem;
-   gap: 0;
-
- }
-
-
-
-   @media (min-width: 300px) {
-      .box {
-         width: 1rem;
-         height: 1rem;
-      }
-    }
-    @media (min-width: 600px) {
-      .box {
-         width: 1.8rem;
-         height: 1.8rem;
-      }
-    }
-    @media (min-width: 993px) {
-      .box {
-         width: 1.5rem;
-         height: 1.5rem;
-      }
-      .board {
-         height: max-content;
-
-      }
-   }
-
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
@@ -61,4 +16,37 @@
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+
+.board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    height: 513px;
+    width: 631px;
+    margin: 0px 0px 20px 0px;
+}
+
+.board-row {
+    display: flex;
+    height: 30px;
+}
+
+.board-cell {
+    border: 1px solid black;
+    width: 37px;
+    height: 31px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.empty {
+    background-color: white;
+}
+
+.filled {
+    background-color: lightgray;
 }
