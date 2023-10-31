@@ -29,8 +29,11 @@ const NEWGAME = styled.div`
     }
     @media (max-width: 992px) {
         .new-game {
+            font-size: 1.2rem;
             width: 80vw;
             margin-bottom: 30px;
+            height: 7vh;
         }
+
     }
 `
