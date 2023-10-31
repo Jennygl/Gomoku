@@ -1,14 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
-import {useLanguage} from './language/LanguageContext'
+import { useLanguage } from './language/LanguageContext'
 import se from './language/languages/SE.json'
 import en from './language/languages/EN.json'
 
 
 const RulesContent = () => {
 
-  const {language} =useLanguage();
-  const lang = language === 'se' ? se : en;
+    const { language } = useLanguage();
+    const lang = language === 'se' ? se : en;
 
     return (
         <Wrap>
@@ -20,17 +20,17 @@ const RulesContent = () => {
                     {lang.rules_2}
                 </li>{' '}
                 <li>
-                {lang.rules_3}
+                    {lang.rules_3}
                 </li>
                 <li>
                     {' '}
                     {lang.rules_4}
                 </li>
                 <li>
-                {lang.rules_5}
+                    {lang.rules_5}
                 </li>
                 <li>
-                {lang.rules_6}
+                    {lang.rules_6}
                 </li>
             </ul>
         </Wrap>
@@ -46,8 +46,7 @@ const Wrap = styled.div`
     }
     @media (max-width: 992px) {
         ul {
-            line-height: 2rem;
-            font-size: 1.2rem;
+            line-height: 1.5rem;
             margin: 4vh 4vw;
         }
     }
