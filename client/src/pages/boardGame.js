@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+// import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { ReactDOM } from 'react-dom'
-import BasicExample from '../components/TabComp'
-import BoardComp from '../components/BoardComp'
+import Board from '../components/BoardComp'
 import '../App.css'
 import Tabs from '../components/TabComp'
 import DecorComp from '../components/DecorComp'
@@ -10,34 +10,27 @@ import NewGameButton from '../components/NewGameButton'
 import GomokuTitle from '../components/GomokuTitle'
 import Ximage from '../assets/player1.png'
 import Oimage from '../assets/player2.png'
-
 import LanguageSwitch from '../components/language/LanguageSwitch'
-const BoardGame = () => {
-    const [board, setBoard] = useState(Array(400).fill(null))
-    const [xPlaying, setXPlaying] = useState(true)
-    const handleBoxClick = (boxIdx) => {
-        const updatedBoard = board.map((value, idx) => {
-            if (idx === boxIdx) {
-                return xPlaying === true ? (
-                    <Green src={Ximage} alt="X" />
-                ) : (
-                    <Pink src={Oimage} alt="O" />
-                )
-            } else {
-                return value
-            }
-        })
-        setBoard(updatedBoard)
 
-        setXPlaying(!xPlaying)
+const BoardGame = () => {
+    const [boardData, setBoardData] = useState(null)
+
+    useEffect(() => {
+        fetch('http://localhost:3000/api/gomoku/board') // Use the correct server URL
+            .then((response) => response.json())
+            .then((data) => setBoardData(data))
+            .catch((error) =>
+                console.error('Error fetching board data:', error)
+            )
+    }, [])
+
+    if (!boardData) {
+        return <div>Loading...</div>
     }
+
     return (
         <div>
             <Body>
-                {/* <div className="board-title-container">
-                    <GomokuTitle />
-                </div>
-                <LanguageSwitch/> */}
                 <Header>
                     <GomokuTitleContainer>
                         <GomokuTitle />
@@ -47,8 +40,8 @@ const BoardGame = () => {
                     </LanguageSwitchContainer>
                 </Header>
                 <div className="board-container">
-                    {' '}
-                    <BoardComp board={board} onClick={handleBoxClick} />
+                    {/* <Board boardData={boardData} /> */}
+                    <Board boardData={boardData} />
                     <div className="right-container">
                         <div className="tab-newgame">
                             <Tabs />
