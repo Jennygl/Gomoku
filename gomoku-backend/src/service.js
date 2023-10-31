@@ -9,7 +9,7 @@ app.use(express.json())
 app.use(cors())
 
 app.get('/api/gomoku/board', (req, res) => {
-    const gameData = require('./routes/game.json') // Load your game data from a JSON file
+    const gameData = require('./routes/game.json') 
     res.json(gameData)
 })
 
