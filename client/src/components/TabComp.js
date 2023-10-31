@@ -6,6 +6,7 @@ import { SettingsContent } from './SettingsContent'
 import { useLanguage } from './language/LanguageContext'
 import se from '../components/language/languages/SE.json'
 import en from '../components/language/languages/EN.json'
+import Players from './PlayersComp'
 
 function Tabs() {
     const { language } = useLanguage()
@@ -31,7 +32,7 @@ function Tabs() {
                                 aria-selected="true"
                             >
                                 <Link className="nav-link" href="#">
-                                    Timer
+                                    Game
                                 </Link>
                             </Li>
                             <Li
@@ -88,7 +89,7 @@ function Tabs() {
                             aria-labelledby="nav-timer-tab"
                             tabIndex="0"
                         >
-                            Timer
+                            <Players />
                         </div>
                         <div
                             className="tab-pane fade"
@@ -115,7 +116,7 @@ function Tabs() {
                             aria-labelledby="nav-settings-tab"
                             tabIndex="0"
                         >
-                            <SettingsContent/>
+                            <SettingsContent />
                         </div>
                     </div>
                 </TabContentSection>
