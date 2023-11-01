@@ -4,12 +4,17 @@ import { useLanguage } from './language/LanguageContext'
 import se from '../components/language/languages/SE.json'
 import en from '../components/language/languages/EN.json'
 
-const NewGameButton = () => {
+function NewGameButton({ onClick }) {
     const { language } = useLanguage()
     const lang = language === 'se' ? se : en
+
+
+
     return (
         <NEWGAME>
-            <button className="new-game">{lang.new_game_button}</button>
+            <button className="new-game" onClick={onClick}>
+                {lang.new_game_button}
+            </button>
         </NEWGAME>
     )
 }
@@ -34,6 +39,5 @@ const NEWGAME = styled.div`
             margin-bottom: 30px;
             height: 7vh;
         }
-
     }
 `
