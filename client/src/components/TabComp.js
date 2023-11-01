@@ -8,7 +8,7 @@ import se from '../components/language/languages/SE.json'
 import en from '../components/language/languages/EN.json'
 import Players from './PlayersComp'
 
-function Tabs() {
+const Tabs = ({ boardData }) => {
     const { language } = useLanguage()
     const lang = language === 'se' ? se : en
     return (
@@ -32,7 +32,7 @@ function Tabs() {
                                 aria-selected="true"
                             >
                                 <Link className="nav-link" href="#">
-                                    Game
+                                    {lang.game_heading}
                                 </Link>
                             </Li>
                             <Li
@@ -89,7 +89,33 @@ function Tabs() {
                             aria-labelledby="nav-timer-tab"
                             tabIndex="0"
                         >
-                            <Players />
+                            <div className="gameInfo">
+                                <h3>{lang.about_game_heading}</h3>
+                                <p>
+                                    Player 1:{' '}
+                                    {boardData.player1.name ? (
+                                        <span id="player1">
+                                            {boardData.player1.name},{' '}
+                                            {boardData.player1.id}
+                                        </span>
+                                    ) : (
+                                        <span>No player</span>
+                                    )}
+                                </p>
+                                <p>
+                                    Player 2:{' '}
+                                    {boardData.player2.name ? (
+                                        <span id="player2">
+                                            {boardData.player2.name},{' '}
+                                            {boardData.player2.id}
+                                        </span>
+                                    ) : (
+                                        <span>No player</span>
+                                    )}
+                                </p>
+                                <p>Columns: {boardData.board.cols}</p>
+                                <p>Rows: {boardData.board.rows}</p>
+                            </div>
                         </div>
                         <div
                             className="tab-pane fade"
@@ -166,5 +192,8 @@ const TabContentSection = styled.div`
     word-break: break-word;
     @media (max-width: 992px) {
         width: 80vw;
+    }
+    .gameInfo {
+        margin: 1em;
     }
 `

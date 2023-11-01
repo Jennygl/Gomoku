@@ -44,7 +44,7 @@ const BoardGame = () => {
                     <Board boardData={boardData} />
                     <div className="right-container">
                         <div className="tab-newgame">
-                            <Tabs />
+                            {boardData && <Tabs boardData={boardData} />}
                             <NewGameButton />
                         </div>
                         <DecorComp />
