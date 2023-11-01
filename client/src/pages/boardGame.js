@@ -15,17 +15,27 @@ import LanguageSwitch from '../components/language/LanguageSwitch'
 const BoardGame = () => {
     const [boardData, setBoardData] = useState(null)
 
-    useEffect(() => {
-        fetch('http://localhost:3000/api/gomoku/board') // Use the correct server URL
+    const fetchBoardData = () => {
+        fetch('http://localhost:3000/api/gomoku/board')
             .then((response) => response.json())
             .then((data) => setBoardData(data))
             .catch((error) =>
                 console.error('Error fetching board data:', error)
             )
+    }
+
+    // Fetch the initial game board data when the component mounts
+    useEffect(() => {
+        fetchBoardData()
     }, [])
 
     if (!boardData) {
         return <div>Loading...</div>
+    }
+
+    // Reset the game board to its initial state
+    const handleNewGameClick = () => {
+        fetchBoardData()
     }
 
     return (
@@ -45,7 +55,7 @@ const BoardGame = () => {
                     <div className="right-container">
                         <div className="tab-newgame">
                             {boardData && <Tabs boardData={boardData} />}
-                            <NewGameButton />
+                            <NewGameButton onClick={handleNewGameClick} />
                         </div>
                         <DecorComp />
                     </div>
