@@ -4,6 +4,8 @@
   "settings_change_language": "Change language",
   "settings_language_swedish": "Swedish",
   "settings_language_english": "English",
+  "game_heading": "This Game",
+  "about_game_heading": "This Game",
   "rules_heading": "Rules",
   "rules_1": "Two players take turns to place their pieces on the intersections of the grid lines",
   "rules_2": "One player uses 'green tree' pieces, and the other uses 'pink tree' pieces",
