@@ -52,6 +52,7 @@ const BoardGame = () => {
                 <div className="board-container">
                     {/* <Board boardData={boardData} /> */}
                     <Board boardData={boardData} />
+
                     <div className="right-container">
                         <div className="tab-newgame">
                             {boardData && <Tabs boardData={boardData} />}
