@@ -8,7 +8,6 @@ const cors = require('cors')
 app.use(express.json())
 app.use(cors())
 
-let gameData = require('./routes/game.json')
 const playerNames = [
     'SquigglyPuff',
     'BananaNinja',
@@ -129,6 +128,30 @@ app.get('/api/gomoku/board', (req, res) => {
 
 app.post('/api/gomoku/move', (req, res) => {
     // Handle the game move logic here
+    const { row, col, player } = req.body
+
+    // Check if the cell is empty
+    if (gameData.board.tiles[row][col] === 0) {
+        // Update the game board with the player's move
+        gameData.board.tiles[row][col] = player
+
+        // Check for a win
+        if (checkForWin(player, row, col)) {
+            res.json({ message: `Player ${player} wins!` })
+            // Reset the game state
+            resetGame()
+
+            console.log(`Player ${player} wins!`)
+        } else {
+            // Implement draw conditions here (if all cells are filled, for example)
+
+            // Return the updated game state
+            res.json(gameData)
+        }
+    } else {
+        // Handle invalid move (cell is not empty)
+        res.status(400).json({ error: 'Invalid move' })
+    }
 })
 // Create a new player and assign a UUID
 app.post('/api/gomoku/createPlayer', (req, res) => {
