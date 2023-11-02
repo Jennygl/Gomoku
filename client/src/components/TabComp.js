@@ -168,6 +168,7 @@ const Link = styled.a`
     color: black;
     text-decoration: none;
     font-family: 'Inter', sans-serif;
+    white-space: nowrap;
     &:hover {
         color: black;
     }
