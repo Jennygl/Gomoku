@@ -4,17 +4,124 @@ app.use(express.json())
 app.use('/api/gomoku', require('./routes/gomoku_routes.js'))
 const PORT = process.env.PORT || 3000
 const cors = require('cors')
-
 app.use(express.json())
 app.use(cors())
 
+const gameData = require('./routes/game.json')
+// console.log(gameData)
+
+function resetGame() {
+    // Initialize the game state with the original data
+    gameData = require('./routes/game.json')
+}
+
+function checkForWin(player, row, col) {
+    const board = gameData.board.tiles
+    const numRows = board.length
+    const numCols = board[0].length
+
+    // Check horizontal
+    let consecutiveCount = 0
+    for (let i = 0; i < numCols; i++) {
+        if (board[row][i] === player) {
+            consecutiveCount++
+            if (consecutiveCount === 5) {
+                return true // Player has won horizontally
+            }
+        } else {
+            consecutiveCount = 0
+        }
+    }
+
+    // Check vertical
+    consecutiveCount = 0
+    for (let i = 0; i < numRows; i++) {
+        if (board[i][col] === player) {
+            consecutiveCount++
+            if (consecutiveCount === 5) {
+                return true // Player has won vertically
+            }
+        } else {
+            consecutiveCount = 0
+        }
+    }
+
+    // Check diagonal (top-left to bottom-right)
+    consecutiveCount = 0
+    for (let i = -4; i <= 4; i++) {
+        const rowIdx = row + i
+        const colIdx = col + i
+        if (
+            rowIdx >= 0 &&
+            rowIdx < numRows &&
+            colIdx >= 0 &&
+            colIdx < numCols
+        ) {
+            if (board[rowIdx][colIdx] === player) {
+                consecutiveCount++
+                if (consecutiveCount === 5) {
+                    return true // Player has won diagonally
+                }
+            } else {
+                consecutiveCount = 0
+            }
+        }
+    }
+
+    // Check diagonal (top-right to bottom-left)
+    consecutiveCount = 0
+    for (let i = -4; i <= 4; i++) {
+        const rowIdx = row + i
+        const colIdx = col - i
+        if (
+            rowIdx >= 0 &&
+            rowIdx < numRows &&
+            colIdx >= 0 &&
+            colIdx < numCols
+        ) {
+            if (board[rowIdx][colIdx] === player) {
+                consecutiveCount++
+                if (consecutiveCount === 5) {
+                    return true // Player has won diagonally
+                }
+            } else {
+                consecutiveCount = 0
+            }
+        }
+    }
+
+    return false // No win
+}
+
 app.get('/api/gomoku/board', (req, res) => {
-    const gameData = require('./routes/game.json') 
     res.json(gameData)
 })
 
 app.post('/api/gomoku/move', (req, res) => {
-    // Handle the game move logic here
+    const { row, col, player } = req.body
+
+    // Check if the cell is empty
+    if (gameData.board.tiles[row][col] === 0) {
+        // Update the game board with the player's move
+        gameData.board.tiles[row][col] = player
+
+        // Check for a win
+        if (checkForWin(player, row, col)) {
+            res.json({ message: `Player ${player} wins!` })
+            // Reset the game state
+            resetGame()
+
+            console.log(`Player ${player} wins!`)
+        } else {
+            // Implement draw conditions here (if all cells are filled, for example)
+
+            // Return the updated game state
+            res.json(gameData)
+        }
+    } else {
+        // Handle invalid move (cell is not empty)
+        res.status(400).json({ error: 'Invalid move' })
+    }
 })
 
 app.listen(PORT, () => {
