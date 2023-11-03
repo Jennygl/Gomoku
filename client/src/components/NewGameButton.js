@@ -4,15 +4,34 @@ import { useLanguage } from './language/LanguageContext'
 import se from '../components/language/languages/SE.json'
 import en from '../components/language/languages/EN.json'
 
-function NewGameButton({ onClick }) {
+const NewGameButton = ({ boardData }) => {
     const { language } = useLanguage()
     const lang = language === 'se' ? se : en
 
-
+    const emptyboard = () => {
+        // Make a POST request to clear the game board on the server
+        fetch('http://localhost:3000/api/gomoku/emptyBoard', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then((response) => response.json())
+            .then((data) =>
+                // You can handle the response data if needed
+                console.log('Clear', data)
+            )
+            .catch((error) => {
+                console.error(
+                    'Error clearing the game board on the server',
+                    error
+                )
+            })
+    }
 
     return (
         <NEWGAME>
-            <button className="new-game" onClick={onClick}>
+            <button className="new-game" onClick={emptyboard}>
                 {lang.new_game_button}
             </button>
         </NEWGAME>
