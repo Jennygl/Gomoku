@@ -95,8 +95,8 @@ const Tabs = ({ boardData }) => {
                                     Player 1:{' '}
                                     {boardData.player1.name ? (
                                         <span id="player1">
-                                            {boardData.player1.name},{' '}
-                                            {boardData.player1.id}
+                                            {boardData.player1.name}
+                                            {/* ,{' '}{boardData.player1.id} */}
                                         </span>
                                     ) : (
                                         <span>No player</span>
@@ -106,8 +106,8 @@ const Tabs = ({ boardData }) => {
                                     Player 2:{' '}
                                     {boardData.player2.name ? (
                                         <span id="player2">
-                                            {boardData.player2.name},{' '}
-                                            {boardData.player2.id}
+                                            {boardData.player2.name}
+                                            {/* ,{' '}{boardData.player2.id} */}
                                         </span>
                                     ) : (
                                         <span>No player</span>
