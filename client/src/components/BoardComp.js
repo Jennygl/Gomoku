@@ -4,7 +4,6 @@ const Board = ({ boardData }) => {
     const [currentPlayer, setCurrentPlayer] = useState('x')
     const [winningMessage, setWinningMessage] = useState(null)
 
-
     // Define the updateGameOnServer function at the top level of the component
     const updateGameOnServer = (moveData) => {
         // Make a POST request to your Express server
@@ -69,6 +68,8 @@ const Board = ({ boardData }) => {
                     ))}
                 </div>
             ))}
+
+            <p>Current Player's Turn: {currentPlayer}</p>
             {winningMessage && <p>{winningMessage}</p>}
         </div>
     )
