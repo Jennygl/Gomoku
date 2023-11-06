@@ -1,6 +1,6 @@
 // import React, { useState } from 'react'
 import React, { useState, useEffect } from 'react'
-import { ReactDOM } from 'react-dom'
+import ReactDOM from 'react-dom/client'
 import Board from '../components/BoardComp'
 import '../App.css'
 import Tabs from '../components/TabComp'
@@ -11,10 +11,8 @@ import GomokuTitle from '../components/GomokuTitle'
 import Ximage from '../assets/player1.png'
 import Oimage from '../assets/player2.png'
 import LanguageSwitch from '../components/language/LanguageSwitch'
-
 const BoardGame = () => {
     const [boardData, setBoardData] = useState(null)
-
     const fetchBoardData = () => {
         fetch('http://localhost:3000/api/gomoku/board')
             .then((response) => response.json())
@@ -24,31 +22,50 @@ const BoardGame = () => {
             )
     }
 
+    const [players, setPlayers] = useState([])
     const emptyboard = () => {
-        // Make a POST request to clear the game board on the server
-        fetch('http://localhost:3000/api/gomoku/createPlayer', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then((response) => response.json())
-            .then((data) =>
-                // You can handle the response data if needed
-                console.log('Created player', data)
-            )
-            .catch((error) => {
-                console.error(
-                    'Error clearing the game board on the server',
-                    error
-                )
+        const storedPlayers = JSON.parse(localStorage.getItem('players'))
+        // POST request to create player when there is none in localStorage
+        if (!storedPlayers) {
+            fetch('http://localhost:3000/api/gomoku/createPlayer', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
             })
+                .then((response) => response.json())
+                .then((data) => {
+                    // Save the players in localStorage
+                    const updatedPlayers = [
+                        {
+                            player1UUID: data.player1UUID,
+                            player1Name: data.player1Name,
+                            player2UUID: data.player2UUID,
+                            player2Name: data.player2Name
+                        }
+                    ]
+                    localStorage.setItem(
+                        'players',
+                        JSON.stringify(updatedPlayers)
+                    )
+                    console.log('Created player', data)
+                })
+                .catch((error) => {
+                    console.error(
+                        'Error clearing the game board on the server',
+                        error
+                    )
+                })
+        }
     }
 
-    // Fetch the initial game board data when the component mounts
+    // Fetch the initial game data when the component mounts
     useEffect(() => {
         fetchBoardData()
         emptyboard()
+        const storedPlayers = JSON.parse(localStorage.getItem('players')) || []
+        setPlayers(storedPlayers)
+        console.log(storedPlayers)
     }, [])
 
     if (!boardData) {
@@ -77,7 +94,9 @@ const BoardGame = () => {
 
                     <div className="right-container">
                         <div className="tab-newgame">
-                            {boardData && <Tabs boardData={boardData} />}
+                            {boardData && (
+                                <Tabs boardData={boardData} players={players} />
+                            )}
                             <NewGameButton boardData={boardData} />
                         </div>
                         <DecorComp />
