@@ -37,7 +37,6 @@ const playerNames = [
 ]
 
 const gameData = require('./routes/game.json')
-// console.log(gameData)
 
 function resetGame() {
     // Initialize the game state with the original data
@@ -138,9 +137,6 @@ app.post('/api/gomoku/move', (req, res) => {
         // Check for a win
         if (checkForWin(player, row, col)) {
             res.json({ message: `Player ${player} wins!` })
-            // Reset the game state
-            // resetGame()
-
             console.log(`Player ${player} wins!`)
         } else {
             // Implement draw conditions here (if all cells are filled, for example)
