@@ -1,4 +1,3 @@
-// import React, { useState } from 'react'
 import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom/client'
 import Board from '../components/BoardComp'
@@ -8,8 +7,6 @@ import DecorComp from '../components/DecorComp'
 import styled from 'styled-components'
 import NewGameButton from '../components/NewGameButton'
 import GomokuTitle from '../components/GomokuTitle'
-import Ximage from '../assets/player1.png'
-import Oimage from '../assets/player2.png'
 import LanguageSwitch from '../components/language/LanguageSwitch'
 const BoardGame = () => {
     const [boardData, setBoardData] = useState(null)
@@ -89,7 +86,6 @@ const BoardGame = () => {
                     </LanguageSwitchContainer>
                 </Header>
                 <div className="board-container">
-                    {/* <Board boardData={boardData} /> */}
                     <Board boardData={boardData} />
 
                     <div className="right-container">
@@ -117,6 +113,7 @@ const Body = styled.div`
         display: flex;
         justify-content: space-evenly;
     }
+
     .board-title-container {
         position: relative;
         left: 12vw;
@@ -146,11 +143,13 @@ const Body = styled.div`
             align-items: center;
         }
     }
+
     .tab-newgame {
         display: flex;
         flex-direction: column;
         @media (max-width: 992px) {
             flex-direction: column-reverse;
+            margin-top: 42px;
         }
     }
 `
@@ -159,7 +158,7 @@ const Header = styled.div`
     justify-content: space-between;
     align-items: flex-start;
     padding: 10px 20px;
-    margin: 3px 0px 50px 20px;
+    margin: 3px 0px 8px 20px;
 
     @media (max-width: 992px) {
         flex-direction: column;

@@ -1,4 +1,3 @@
-// import Nav from 'react-bootstrap/Nav'
 import styled from 'styled-components'
 import RulesContent from './RulesContent'
 import AboutGomoku from './AboutGomoku'
