@@ -24,9 +24,31 @@ const BoardGame = () => {
             )
     }
 
+    const emptyboard = () => {
+        // Make a POST request to clear the game board on the server
+        fetch('http://localhost:3000/api/gomoku/createPlayer', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then((response) => response.json())
+            .then((data) =>
+                // You can handle the response data if needed
+                console.log('Created player', data)
+            )
+            .catch((error) => {
+                console.error(
+                    'Error clearing the game board on the server',
+                    error
+                )
+            })
+    }
+
     // Fetch the initial game board data when the component mounts
     useEffect(() => {
         fetchBoardData()
+        emptyboard()
     }, [])
 
     if (!boardData) {
