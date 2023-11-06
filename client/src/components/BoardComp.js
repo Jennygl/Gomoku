@@ -3,8 +3,9 @@ import player1 from '../assets/player1.png'
 import player2 from '../assets/player2.png'
 
 const Board = ({ boardData }) => {
-    const [currentPlayer, setCurrentPlayer] = useState('x')
-    const [winningMessage, setWinningMessage] = useState(null)
+    const [currentPlayer, setCurrentPlayer] = useState('x');
+    const [winningMessage, setWinningMessage] = useState(null);
+    const [gameEnded, setGameEnded] = useState(false);
 
     const [cellContents, setCellContents] = useState(
         Array.from({ length: boardData.board.rows }, () =>
@@ -27,7 +28,9 @@ const Board = ({ boardData }) => {
     }
 
     const handleCellClick = (row, col) => {
-        console.log('i am listening')
+      if(gameEnded) {
+        return;
+      }
         if (boardData.board.tiles[row][col] === 0) {
             // Update the local board state
             const updatedBoard = [...boardData.board.tiles]
@@ -45,7 +48,8 @@ const Board = ({ boardData }) => {
                 .then((response) => {
                     // Handle the response from the server here
                     if (response.message) {
-                        setWinningMessage(response.message)
+                      setGameEnded(true);
+                        setWinningMessage(response.message);
                     }
                     // You can update the frontend game state based on the response
                 })
