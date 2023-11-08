@@ -5,11 +5,11 @@
     "player": 1,
     "player1": {
         "id": "",
-        "name": "name1"
+        "name": ""
     },
     "player2": {
         "id": "",
-        "name": "name2"
+        "name": ""
     },
     "state": "playing",
     "board": {

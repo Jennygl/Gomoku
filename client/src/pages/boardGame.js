@@ -20,7 +20,7 @@ const BoardGame = () => {
     }
 
     const [players, setPlayers] = useState([])
-    const emptyboard = () => {
+    const createplayers = () => {
         const storedPlayers = JSON.parse(localStorage.getItem('players'))
         // POST request to create player when there is none in localStorage
         if (!storedPlayers) {
@@ -59,7 +59,7 @@ const BoardGame = () => {
     // Fetch the initial game data when the component mounts
     useEffect(() => {
         fetchBoardData()
-        emptyboard()
+        createplayers()
         const storedPlayers = JSON.parse(localStorage.getItem('players')) || []
         setPlayers(storedPlayers)
         console.log(storedPlayers)
