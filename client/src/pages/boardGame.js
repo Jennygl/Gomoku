@@ -86,7 +86,7 @@ const BoardGame = () => {
                     </LanguageSwitchContainer>
                 </Header>
                 <div className="board-container">
-                    <Board boardData={boardData} />
+                    <Board boardData={boardData} players={players} />
 
                     <div className="right-container">
                         <div className="tab-newgame">
