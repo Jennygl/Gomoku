@@ -7,7 +7,7 @@ import se from '../components/language/languages/SE.json'
 import en from '../components/language/languages/EN.json'
 import Players from './PlayersComp'
 
-const Tabs = ({ boardData }) => {
+const Tabs = ({ boardData, players }) => {
     const { language } = useLanguage()
     const lang = language === 'se' ? se : en
     return (
@@ -90,34 +90,14 @@ const Tabs = ({ boardData }) => {
                         >
                             <div className="gameInfo">
                                 <h3>{lang.about_game_heading}</h3>
-                                <p>
-                                    {lang.player1}:{' '}
-                                    {boardData.player1.name ? (
-                                        <span id="player1">
-                                            {boardData.player1.name}
-                                            {/* ,{' '}{boardData.player1.id} */}
-                                        </span>
-                                    ) : (
-                                        <span>No player</span>
-                                    )}
-                                </p>
-                                <p>
-                                    {lang.player2}:{' '}
-                                    {boardData.player2.name ? (
-                                        <span id="player2">
-                                            {boardData.player2.name}
-                                            {/* ,{' '}{boardData.player2.id} */}
-                                        </span>
-                                    ) : (
-                                        <span>No player</span>
-                                    )}
-                                </p>
-                                <p>
-                                    {lang.column}: {boardData.board.cols}
-                                </p>
-                                <p>
-                                    {lang.row}: {boardData.board.rows}
-                                </p>
+                                {players.map((player, index) => (
+                                    <div key={index}>
+                                        <p>Player 1: {player.player1Name} </p>
+                                        <p>Player 2: {player.player2Name}</p>
+                                    </div>
+                                ))}
+                                <p>Columns: {boardData.board.cols}</p>
+                                <p>Rows: {boardData.board.rows}</p>
                             </div>
                         </div>
                         <div
