@@ -91,7 +91,7 @@ const Tabs = ({ boardData }) => {
                             <div className="gameInfo">
                                 <h3>{lang.about_game_heading}</h3>
                                 <p>
-                                    Player 1:{' '}
+                                    {lang.player1}:{' '}
                                     {boardData.player1.name ? (
                                         <span id="player1">
                                             {boardData.player1.name}
@@ -102,7 +102,7 @@ const Tabs = ({ boardData }) => {
                                     )}
                                 </p>
                                 <p>
-                                    Player 2:{' '}
+                                    {lang.player2}:{' '}
                                     {boardData.player2.name ? (
                                         <span id="player2">
                                             {boardData.player2.name}
@@ -112,8 +112,12 @@ const Tabs = ({ boardData }) => {
                                         <span>No player</span>
                                     )}
                                 </p>
-                                <p>Columns: {boardData.board.cols}</p>
-                                <p>Rows: {boardData.board.rows}</p>
+                                <p>
+                                    {lang.column}: {boardData.board.cols}
+                                </p>
+                                <p>
+                                    {lang.row}: {boardData.board.rows}
+                                </p>
                             </div>
                         </div>
                         <div
