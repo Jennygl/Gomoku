@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import player1 from '../assets/player1.png'
 import player2 from '../assets/player2.png'
 
-const Board = ({ boardData }) => {
-    const [currentPlayer, setCurrentPlayer] = useState('x');
-    const [winningMessage, setWinningMessage] = useState(null);
-    const [gameEnded, setGameEnded] = useState(false);
+const Board = ({ boardData, players }) => {
+    const [currentPlayer, setCurrentPlayer] = useState('x')
+    const [winningMessage, setWinningMessage] = useState(null)
+    const [gameEnded, setGameEnded] = useState(false)
 
     const [cellContents, setCellContents] = useState(
         Array.from({ length: boardData.board.rows }, () =>
@@ -28,9 +28,9 @@ const Board = ({ boardData }) => {
     }
 
     const handleCellClick = (row, col) => {
-      if(gameEnded) {
-        return;
-      }
+        if (gameEnded) {
+            return
+        }
         if (boardData.board.tiles[row][col] === 0) {
             // Update the local board state
             const updatedBoard = [...boardData.board.tiles]
@@ -48,8 +48,8 @@ const Board = ({ boardData }) => {
                 .then((response) => {
                     // Handle the response from the server here
                     if (response.message) {
-                      setGameEnded(true);
-                        setWinningMessage(response.message);
+                        setGameEnded(true)
+                        setWinningMessage(response.message)
                     }
                     // You can update the frontend game state based on the response
                 })
@@ -101,27 +101,40 @@ const Board = ({ boardData }) => {
                     ))}
                 </div>
             ))}
-
-            <p>
-                Current Player's Turn:
-                {currentPlayer === 'x' && (
-                    <img
-                        src={player1}
-                        alt="Player 1"
-                        className="goPieces"
-                        style={imageStyle}
-                    />
-                )}
-                {currentPlayer === 'o' && (
-                    <img
-                        src={player2}
-                        alt="Player 2"
-                        className="goPieces"
-                        style={imageStyle}
-                    />
-                )}
-            </p>
-
+            {!winningMessage && (
+                <p>
+                    Current Player's Turn: {''}
+                    {currentPlayer === 'x' && (
+                        <img
+                            src={player1}
+                            alt="Player 1"
+                            className="goPieces"
+                            style={imageStyle}
+                        />
+                    )}
+                    {currentPlayer === 'o' && (
+                        <img
+                            src={player2}
+                            alt="Player 2"
+                            className="goPieces"
+                            style={imageStyle}
+                        />
+                    )}
+                    {players.map((player, index) => (
+                        <span key={index}>
+                            {currentPlayer === 'x' ? (
+                                <span>
+                                    {''} {player.player1Name}
+                                </span>
+                            ) : (
+                                <span>
+                                    {''} {player.player2Name}
+                                </span>
+                            )}
+                        </span>
+                    ))}
+                </p>
+            )}
             {winningMessage && (
                 <p>
                     {winningMessage.includes('x') && (
@@ -132,7 +145,7 @@ const Board = ({ boardData }) => {
                                 className="goPieces"
                                 style={imageStyle}
                             />
-                            {' Player 1 '}
+                            {players[0].player1Name}{' '}
                         </>
                     )}
                     {winningMessage.includes('o') && (
@@ -143,7 +156,7 @@ const Board = ({ boardData }) => {
                                 className="goPieces"
                                 style={imageStyle}
                             />
-                            {' Player 2 '}
+                            {players[0].player2Name}{' '}
                         </>
                     )}
                     wins!
