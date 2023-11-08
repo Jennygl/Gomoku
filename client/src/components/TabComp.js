@@ -100,7 +100,7 @@ const Tabs = ({ boardData, players }) => {
                                 {players.map((player, index) => (
                                     <div key={index}>
                                         <p>
-                                            Player 1: {player.player1Name}
+                                            {lang.player1}: {player.player1Name}
                                             <span>
                                                 {' '}
                                                 <img
@@ -112,7 +112,7 @@ const Tabs = ({ boardData, players }) => {
                                             </span>
                                         </p>
                                         <p>
-                                            Player 2: {player.player2Name}
+                                            {lang.player2}: {player.player2Name}
                                             <span>
                                                 {' '}
                                                 <img
@@ -125,8 +125,12 @@ const Tabs = ({ boardData, players }) => {
                                         </p>
                                     </div>
                                 ))}
-                                <p>Columns: {boardData.board.cols}</p>
-                                <p>Rows: {boardData.board.rows}</p>
+                                <p>
+                                    {lang.row}: {boardData.board.cols}
+                                </p>
+                                <p>
+                                    {lang.column}: {boardData.board.rows}
+                                </p>
                             </div>
                         </div>
                         <div
