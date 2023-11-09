@@ -140,6 +140,18 @@ const Body = styled.div`
             align-items: center;
         }
     }
+    @media (min-width: 330px) {
+        .board-cell {
+            width: 0.9rem;
+            height: 0.9rem;
+        }
+    }
+    @media (min-width: 520px) {
+        .board-cell {
+            width: 1.8rem;
+            height: 1.8rem;
+        }
+    }
 
     .tab-newgame {
         display: flex;
