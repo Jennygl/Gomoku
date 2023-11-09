@@ -93,7 +93,7 @@ const BoardGame = () => {
                             {boardData && (
                                 <Tabs boardData={boardData} players={players} />
                             )}
-                            <NewGameButton boardData={boardData} />
+                            {/* <NewGameButton boardData={boardData} /> */}
                         </div>
                         <DecorComp />
                     </div>
