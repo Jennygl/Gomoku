@@ -155,90 +155,88 @@
 
 // export default Board
 
-import React, { useState } from 'react';
-import player1 from '../assets/player1.png';
-import player2 from '../assets/player2.png';
-import styled from 'styled-components';
+import React, { useState } from 'react'
+import player1 from '../assets/player1.png'
+import player2 from '../assets/player2.png'
+import styled from 'styled-components'
 import { useLanguage } from './language/LanguageContext'
 import se from '../components/language/languages/SE.json'
 import en from '../components/language/languages/EN.json'
 
-
-const Board = ({ boardData, players }) => {
-
-  const { language } = useLanguage()
-const lang = language === 'se' ? se : en
-    const [currentPlayer, setCurrentPlayer] = useState('x');
-    const [winningMessage, setWinningMessage] = useState(null);
-    const [gameEnded, setGameEnded] = useState(false);
+const Board = ({ boardData, players, fetchBoardData }) => {
+    const { language } = useLanguage()
+    const lang = language === 'se' ? se : en
+    const [currentPlayer, setCurrentPlayer] = useState('x')
+    const [winningMessage, setWinningMessage] = useState(null)
+    const [gameEnded, setGameEnded] = useState(false)
 
     const [cellContents, setCellContents] = useState(
         Array.from({ length: boardData.board.rows }, () =>
             Array.from({ length: boardData.board.cols }, () => null)
         )
-    );
+    )
 
     const updateGameOnServer = (moveData) => {
         return fetch('http://localhost:3000/api/gomoku/move', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify(moveData),
+            body: JSON.stringify(moveData)
         })
             .then((response) => response.json())
             .catch((error) => {
-                console.error('Error updating game on server', error);
-            });
-    };
+                console.error('Error updating game on server', error)
+            })
+    }
 
     const handleCellClick = (row, col) => {
         if (gameEnded) {
-            return;
+            return
         }
         if (boardData.board.tiles[row][col] === 0) {
             // Update the local board state
-            const updatedBoard = [...boardData.board.tiles];
-            updatedBoard[row][col] = currentPlayer;
+            const updatedBoard = [...boardData.board.tiles]
+            updatedBoard[row][col] = currentPlayer
 
             // Send the move to the backend to update the game state
             const moveData = {
                 row,
                 col,
-                player: currentPlayer,
-            };
+                player: currentPlayer
+            }
 
             // Call the updateGameOnServer function
             updateGameOnServer(moveData)
                 .then((response) => {
                     // Handle the response from the server here
                     if (response.message) {
-                        setGameEnded(true);
-                        setWinningMessage(response.message);
+                        setGameEnded(true)
+                        setWinningMessage(response.message)
                     }
                     // You can update the frontend game state based on the response
                 })
                 .catch((error) => {
-                    console.error('Error updating game on server', error);
-                });
+                    console.error('Error updating game on server', error)
+                })
 
             // Update the cell content for the clicked cell
-            const updatedCellContents = [...cellContents];
-            updatedCellContents[row][col] = currentPlayer;
-            setCellContents(updatedCellContents);
+            const updatedCellContents = [...cellContents]
+            updatedCellContents[row][col] = currentPlayer
+            setCellContents(updatedCellContents)
 
             // Toggle the current player
-            setCurrentPlayer(currentPlayer === 'x' ? 'o' : 'x');
+            setCurrentPlayer(currentPlayer === 'x' ? 'o' : 'x')
         }
-    };
+    }
 
     const clearBoard = () => {
         // Make a POST request to clear the game board on the server
         fetch('http://localhost:3000/api/gomoku/emptyBoard', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-            },
+                'Content-Type': 'application/json'
+            }
         })
             .then((response) => response.json())
             .then((data) => {
@@ -247,25 +245,29 @@ const lang = language === 'se' ? se : en
                     Array.from({ length: boardData.board.rows }, () =>
                         Array.from({ length: boardData.board.cols }, () => null)
                     )
-                );
+                )
 
                 // Reset game state
-                setCurrentPlayer('x');
-                setWinningMessage(null);
-                setGameEnded(false);
+                setCurrentPlayer('x')
+                setWinningMessage(null)
+                setGameEnded(false)
+                fetchBoardData()
 
                 // You can handle the response data if needed
-                console.log('Clear', data);
+                console.log('Clear', data)
             })
             .catch((error) => {
-                console.error('Error clearing the game board on the server', error);
-            });
-    };
+                console.error(
+                    'Error clearing the game board on the server',
+                    error
+                )
+            })
+    }
 
     const imageStyle = {
         width: '20px', // Adjust the width as needed
-        height: '20px', // Adjust the height as needed
-    };
+        height: '20px' // Adjust the height as needed
+    }
 
     return (
         <div className="board">
@@ -298,9 +300,8 @@ const lang = language === 'se' ? se : en
                 </div>
             ))}
 
-
             {!winningMessage && (
-                <p style={{fontWeight: 'bold', marginTop: '10px'}}>
+                <p style={{ fontWeight: 'bold', marginTop: '10px' }}>
                     Current Player's Turn: {''}
                     {currentPlayer === 'x' && (
                         <img
@@ -334,7 +335,7 @@ const lang = language === 'se' ? se : en
                 </p>
             )}
             {winningMessage && (
-                <p style={{fontWeight: 'bold', marginTop: '10px'}}>
+                <p style={{ fontWeight: 'bold', marginTop: '10px' }}>
                     {winningMessage.includes('x') && (
                         <>
                             <img
@@ -361,14 +362,15 @@ const lang = language === 'se' ? se : en
                 </p>
             )}
             <NEWGAME>
-            <button className="new-game" onClick={clearBoard}>
-            {lang.new_game_button}
-            </button></NEWGAME>
+                <button className="new-game" onClick={clearBoard}>
+                    {lang.new_game_button}
+                </button>
+            </NEWGAME>
         </div>
-    );
-};
+    )
+}
 
-export default Board;
+export default Board
 
 const NEWGAME = styled.div`
     .new-game {
