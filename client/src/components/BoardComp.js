@@ -158,6 +158,7 @@
 import React, { useState } from 'react'
 import player1 from '../assets/player1.png'
 import player2 from '../assets/player2.png'
+import TabComp from './TabComp'
 import styled from 'styled-components'
 import { useLanguage } from './language/LanguageContext'
 import se from '../components/language/languages/SE.json'
@@ -270,109 +271,138 @@ const Board = ({ boardData, players, fetchBoardData }) => {
     }
 
     return (
-        <div className="board">
-            {boardData.board.tiles.map((row, rowIndex) => (
-                <div className="board-row" key={rowIndex}>
-                    {row.map((cell, colIndex) => (
-                        <div
-                            className={`board-cell ${
-                                cell === 0 ? 'empty' : 'filled'
-                            }`}
-                            key={colIndex}
-                            onClick={() => handleCellClick(rowIndex, colIndex)}
-                        >
-                            {cellContents[rowIndex][colIndex] === 'x' && (
-                                <img
-                                    src={player1}
-                                    alt="Player 1"
-                                    className="goPieces"
-                                />
-                            )}
-                            {cellContents[rowIndex][colIndex] === 'o' && (
-                                <img
-                                    src={player2}
-                                    alt="Player 2"
-                                    className="goPieces"
-                                />
-                            )}
-                        </div>
-                    ))}
-                </div>
-            ))}
+        <PageCont>
+            <div className="board">
+                {boardData.board.tiles.map((row, rowIndex) => (
+                    <div className="board-row" key={rowIndex}>
+                        {row.map((cell, colIndex) => (
+                            <div
+                                className={`board-cell ${
+                                    cell === 0 ? 'empty' : 'filled'
+                                }`}
+                                key={colIndex}
+                                onClick={() =>
+                                    handleCellClick(rowIndex, colIndex)
+                                }
+                            >
+                                {cellContents[rowIndex][colIndex] === 'x' && (
+                                    <img
+                                        src={player1}
+                                        alt="Player 1"
+                                        className="goPieces"
+                                    />
+                                )}
+                                {cellContents[rowIndex][colIndex] === 'o' && (
+                                    <img
+                                        src={player2}
+                                        alt="Player 2"
+                                        className="goPieces"
+                                    />
+                                )}
+                            </div>
+                        ))}
+                    </div>
+                ))}
 
-            {!winningMessage && (
-                <p style={{ fontWeight: 'bold', marginTop: '10px' }}>
-                    Current Player's Turn: {''}
-                    {currentPlayer === 'x' && (
-                        <img
-                            src={player1}
-                            alt="Player 1"
-                            className="goPieces"
-                            style={imageStyle}
-                        />
-                    )}
-                    {currentPlayer === 'o' && (
-                        <img
-                            src={player2}
-                            alt="Player 2"
-                            className="goPieces"
-                            style={imageStyle}
-                        />
-                    )}
-                    {players.map((player, index) => (
-                        <span key={index}>
-                            {currentPlayer === 'x' ? (
-                                <span>
-                                    {''} {player.player1Name}
-                                </span>
-                            ) : (
-                                <span>
-                                    {''} {player.player2Name}
-                                </span>
-                            )}
-                        </span>
-                    ))}
-                </p>
-            )}
-            {winningMessage && (
-                <p style={{ fontWeight: 'bold', marginTop: '10px' }}>
-                    {winningMessage.includes('x') && (
-                        <>
+                {!winningMessage && (
+                    <p style={{ fontWeight: 'bold', marginTop: '10px' }}>
+                        {lang.whos_turn}: {''}
+                        {currentPlayer === 'x' && (
                             <img
                                 src={player1}
                                 alt="Player 1"
                                 className="goPieces"
                                 style={imageStyle}
                             />
-                            {players[0].player1Name}{' '}
-                        </>
-                    )}
-                    {winningMessage.includes('o') && (
-                        <>
+                        )}
+                        {currentPlayer === 'o' && (
                             <img
                                 src={player2}
                                 alt="Player 2"
                                 className="goPieces"
                                 style={imageStyle}
                             />
-                            {players[0].player2Name}{' '}
-                        </>
-                    )}
-                    wins!
-                </p>
-            )}
+                        )}
+                        {players.map((player, index) => (
+                            <span key={index}>
+                                {currentPlayer === 'x' ? (
+                                    <span>
+                                        {''} {player.player1Name}
+                                    </span>
+                                ) : (
+                                    <span>
+                                        {''} {player.player2Name}
+                                    </span>
+                                )}
+                            </span>
+                        ))}
+                    </p>
+                )}
+                {winningMessage && (
+                    <p style={{ fontWeight: 'bold', marginTop: '10px' }}>
+                        {winningMessage.includes('x') && (
+                            <>
+                                <img
+                                    src={player1}
+                                    alt="Player 1"
+                                    className="goPieces"
+                                    style={imageStyle}
+                                />
+                                {players[0].player1Name}{' '}
+                            </>
+                        )}
+                        {winningMessage.includes('o') && (
+                            <>
+                                <img
+                                    src={player2}
+                                    alt="Player 2"
+                                    className="goPieces"
+                                    style={imageStyle}
+                                />
+                                {players[0].player2Name}{' '}
+                            </>
+                        )}
+                        {lang.win}!
+                    </p>
+                )}
+            </div>
             <NEWGAME>
+                <TabComp boardData={boardData} players={players}></TabComp>
                 <button className="new-game" onClick={clearBoard}>
                     {lang.new_game_button}
                 </button>
+                {/* <DecorComp className="decor" /> */}
             </NEWGAME>
-        </div>
+        </PageCont>
     )
 }
 
 export default Board
 
+const PageCont = styled.div`
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    @media (max-width: 992px) {
+        flex-direction: column;
+    }
+    .board {
+        @media (max-width: 992px) {
+            align-self: center;
+        }
+    }
+    /* .board {
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+    } */
+`
 const NEWGAME = styled.div`
+    display: flex;
+    flex-direction: column;
+    @media (max-width: 992px) {
+        flex-direction: column-reverse;
+    }
     .new-game {
         background-color: rgba(103, 160, 69, 0.46);
         width: 30vw;
@@ -390,6 +420,7 @@ const NEWGAME = styled.div`
             width: 80vw;
             margin-bottom: 30px;
             height: 7vh;
+            align-self: center;
         }
     }
 `

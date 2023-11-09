@@ -88,13 +88,7 @@ const BoardGame = () => {
                     />
 
                     <div className="right-container">
-                        <div className="tab-newgame">
-                            {boardData && (
-                                <Tabs boardData={boardData} players={players} />
-                            )}
-                            {/* <NewGameButton /> */}
-                        </div>
-                        <DecorComp />
+                        <DecorComp></DecorComp>
                     </div>
                 </div>
             </Body>
@@ -155,14 +149,14 @@ const Body = styled.div`
         }
     }
 
-    .tab-newgame {
+    /* .tab-newgame {
         display: flex;
         flex-direction: column;
         @media (max-width: 992px) {
             flex-direction: column-reverse;
             margin-top: 42px;
         }
-    }
+    } */
 `
 const Header = styled.div`
     display: flex;
