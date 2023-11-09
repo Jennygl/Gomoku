@@ -69,20 +69,6 @@ const Tabs = ({ boardData, players }) => {
                                     Gomoku
                                 </Link>
                             </Li>
-                            <Li
-                                className="nav-item"
-                                id="nav-settings-tab"
-                                data-bs-toggle="tab"
-                                data-bs-target="#nav-settings"
-                                type="button"
-                                role="tab"
-                                aria-controls="nav-settings"
-                                aria-selected="false"
-                            >
-                                <Link className="nav-link" href="#">
-                                    {lang.settings_heading}
-                                </Link>
-                            </Li>
                         </ul>
                     </nav>
                 </TabSection>
@@ -150,15 +136,6 @@ const Tabs = ({ boardData, players }) => {
                             tabIndex="0"
                         >
                             <AboutGomoku />
-                        </div>
-                        <div
-                            className="tab-pane fade"
-                            id="nav-settings"
-                            role="tabpanel"
-                            aria-labelledby="nav-settings-tab"
-                            tabIndex="0"
-                        >
-                            <SettingsContent />
                         </div>
                     </div>
                 </TabContentSection>
