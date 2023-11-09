@@ -102,7 +102,7 @@ const Board = ({ boardData, players }) => {
                 </div>
             ))}
             {!winningMessage && (
-                <p>
+                <p style={{ fontWeight: 'bold' }}>
                     Current Player's Turn: {''}
                     {currentPlayer === 'x' && (
                         <img
@@ -136,7 +136,7 @@ const Board = ({ boardData, players }) => {
                 </p>
             )}
             {winningMessage && (
-                <p>
+                <p style={{ fontWeight: 'bold' }}>
                     {winningMessage.includes('x') && (
                         <>
                             <img
