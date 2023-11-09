@@ -69,7 +69,6 @@ const BoardGame = () => {
         return <div>Loading...</div>
     }
 
-
     return (
         <div>
             <Body>
@@ -82,7 +81,11 @@ const BoardGame = () => {
                     </LanguageSwitchContainer>
                 </Header>
                 <div className="board-container">
-                    <Board boardData={boardData} players={players} />
+                    <Board
+                        boardData={boardData}
+                        players={players}
+                        fetchBoardData={fetchBoardData}
+                    />
 
                     <div className="right-container">
                         <div className="tab-newgame">
@@ -90,7 +93,6 @@ const BoardGame = () => {
                                 <Tabs boardData={boardData} players={players} />
                             )}
                             {/* <NewGameButton /> */}
-
                         </div>
                         <DecorComp />
                     </div>
