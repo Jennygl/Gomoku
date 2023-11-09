@@ -69,10 +69,6 @@ const BoardGame = () => {
         return <div>Loading...</div>
     }
 
-    // Reset the game board to its initial state
-    const handleNewGameClick = () => {
-        fetchBoardData()
-    }
 
     return (
         <div>
@@ -93,7 +89,8 @@ const BoardGame = () => {
                             {boardData && (
                                 <Tabs boardData={boardData} players={players} />
                             )}
-                            {/* <NewGameButton boardData={boardData} /> */}
+                            <NewGameButton />
+
                         </div>
                         <DecorComp />
                     </div>

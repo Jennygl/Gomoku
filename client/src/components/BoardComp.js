@@ -302,7 +302,7 @@ const lang = language === 'se' ? se : en
             {lang.new_game_button}
             </button></NEWGAME>
 
-            <p>
+            <p style={{ fontWeight: 'bold' }}>
                 Current Player's Turn:
                 {currentPlayer === 'x' && (
                     <img
@@ -323,7 +323,7 @@ const lang = language === 'se' ? se : en
             </p>
 
             {winningMessage && (
-                <p>
+                <p style={{ fontWeight: 'bold' }}>
                     {winningMessage.includes('x') && (
                         <>
                             <img
