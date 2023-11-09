@@ -4,7 +4,7 @@ import { useLanguage } from './language/LanguageContext'
 import se from '../components/language/languages/SE.json'
 import en from '../components/language/languages/EN.json'
 
-const NewGameButton = ({ boardData }) => {
+const NewGameButton = () => {
     const { language } = useLanguage()
     const lang = language === 'se' ? se : en
 
