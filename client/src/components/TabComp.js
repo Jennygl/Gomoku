@@ -6,10 +6,17 @@ import { useLanguage } from './language/LanguageContext'
 import se from '../components/language/languages/SE.json'
 import en from '../components/language/languages/EN.json'
 import Players from './PlayersComp'
+import player1 from '../assets/player1.png'
+import player2 from '../assets/player2.png'
 
 const Tabs = ({ boardData, players }) => {
     const { language } = useLanguage()
     const lang = language === 'se' ? se : en
+
+    const imageStyle = {
+        width: '20px', // Adjust the width as needed
+        height: '20px' // Adjust the height as needed
+    }
     return (
         <>
             <div className="d-flex flex-column">
@@ -92,12 +99,38 @@ const Tabs = ({ boardData, players }) => {
                                 <h3>{lang.about_game_heading}</h3>
                                 {players.map((player, index) => (
                                     <div key={index}>
-                                        <p>Player 1: {player.player1Name} </p>
-                                        <p>Player 2: {player.player2Name}</p>
+                                        <p>
+                                            {lang.player1}: {player.player1Name}
+                                            <span>
+                                                {' '}
+                                                <img
+                                                    src={player1}
+                                                    alt="Player 1"
+                                                    className="goPieces"
+                                                    style={imageStyle}
+                                                />
+                                            </span>
+                                        </p>
+                                        <p>
+                                            {lang.player2}: {player.player2Name}
+                                            <span>
+                                                {' '}
+                                                <img
+                                                    src={player2}
+                                                    alt="Player 2"
+                                                    className="goPieces"
+                                                    style={imageStyle}
+                                                />
+                                            </span>
+                                        </p>
                                     </div>
                                 ))}
-                                <p>Columns: {boardData.board.cols}</p>
-                                <p>Rows: {boardData.board.rows}</p>
+                                <p>
+                                    {lang.row}: {boardData.board.cols}
+                                </p>
+                                <p>
+                                    {lang.column}: {boardData.board.rows}
+                                </p>
                             </div>
                         </div>
                         <div

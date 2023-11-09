@@ -332,7 +332,7 @@ const lang = language === 'se' ? se : en
                                 className="goPieces"
                                 style={imageStyle}
                             />
-                            {' Player 1 '}
+                            {players[0].player1Name}{' '}
                         </>
                     )}
                     {winningMessage.includes('o') && (
@@ -343,7 +343,7 @@ const lang = language === 'se' ? se : en
                                 className="goPieces"
                                 style={imageStyle}
                             />
-                            {' Player 2 '}
+                            {players[0].player2Name}{' '}
                         </>
                     )}
                     wins!
