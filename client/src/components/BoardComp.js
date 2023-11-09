@@ -164,7 +164,7 @@ import se from '../components/language/languages/SE.json'
 import en from '../components/language/languages/EN.json'
 
 
-const BoardComp = ({ boardData }) => {
+const Board = ({ boardData, players }) => {
 
   const { language } = useLanguage()
 const lang = language === 'se' ? se : en
@@ -297,33 +297,44 @@ const lang = language === 'se' ? se : en
                     ))}
                 </div>
             ))}
-<NEWGAME>
-            <button className="new-game" onClick={clearBoard}>
-            {lang.new_game_button}
-            </button></NEWGAME>
 
-            <p style={{ fontWeight: 'bold' }}>
-                Current Player's Turn:
-                {currentPlayer === 'x' && (
-                    <img
-                        src={player1}
-                        alt="Player 1"
-                        className="goPieces"
-                        style={imageStyle}
-                    />
-                )}
-                {currentPlayer === 'o' && (
-                    <img
-                        src={player2}
-                        alt="Player 2"
-                        className="goPieces"
-                        style={imageStyle}
-                    />
-                )}
-            </p>
 
+            {!winningMessage && (
+                <p style={{fontWeight: 'bold', marginTop: '10px'}}>
+                    Current Player's Turn: {''}
+                    {currentPlayer === 'x' && (
+                        <img
+                            src={player1}
+                            alt="Player 1"
+                            className="goPieces"
+                            style={imageStyle}
+                        />
+                    )}
+                    {currentPlayer === 'o' && (
+                        <img
+                            src={player2}
+                            alt="Player 2"
+                            className="goPieces"
+                            style={imageStyle}
+                        />
+                    )}
+                    {players.map((player, index) => (
+                        <span key={index}>
+                            {currentPlayer === 'x' ? (
+                                <span>
+                                    {''} {player.player1Name}
+                                </span>
+                            ) : (
+                                <span>
+                                    {''} {player.player2Name}
+                                </span>
+                            )}
+                        </span>
+                    ))}
+                </p>
+            )}
             {winningMessage && (
-                <p style={{ fontWeight: 'bold' }}>
+                <p style={{fontWeight: 'bold', marginTop: '10px'}}>
                     {winningMessage.includes('x') && (
                         <>
                             <img
@@ -349,11 +360,15 @@ const lang = language === 'se' ? se : en
                     wins!
                 </p>
             )}
+            <NEWGAME>
+            <button className="new-game" onClick={clearBoard}>
+            {lang.new_game_button}
+            </button></NEWGAME>
         </div>
     );
 };
 
-export default BoardComp;
+export default Board;
 
 const NEWGAME = styled.div`
     .new-game {
