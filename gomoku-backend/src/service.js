@@ -133,16 +133,25 @@ app.post('/api/gomoku/move', (req, res) => {
     if (gameData.board.tiles[row][col] === 0) {
         // Update the game board with the player's move
         gameData.board.tiles[row][col] = player
+        gameData.round += 1;
 
         // Check for a win
         if (checkForWin(player, row, col)) {
+            gameData.round = 0;
             res.json({ message: `Player ${player} wins!` })
             console.log(`Player ${player} wins!`)
         } else {
-            // Implement draw conditions here (if all cells are filled, for example)
-
+            // Check for a draw based on the number of game rounds
+            console.log(gameData.round)
+            if (gameData.round >= gameData.board.cols * gameData.board.rows) {
+                gameData.round = 0;
+                res.json({ draw: true, message: 'The game is a draw.' })
+                console.log('The game is a draw.')
+                
+            } else {
             // Return the updated game state
             res.json(gameData)
+            }
         }
     } else {
         // Handle invalid move (cell is not empty)
