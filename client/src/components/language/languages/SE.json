@@ -20,6 +20,8 @@
     "new_game_button": "Nytt spel",
     "player1":"Spelare 1",
     "player2":"Spelare 2",
-    "column": "Kolumn",
-    "row":"Rad"
+    "column": "Kolumner",
+    "row":"Rader",
+    "win":"vinner",
+    "whos_turn":"Spelares tur"
 }
