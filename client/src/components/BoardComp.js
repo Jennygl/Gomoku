@@ -169,6 +169,7 @@ const Board = ({ boardData, players, fetchBoardData }) => {
     const [currentPlayer, setCurrentPlayer] = useState('x')
     const [winningMessage, setWinningMessage] = useState(null)
     const [gameEnded, setGameEnded] = useState(false)
+    const [isDraw, setIsDraw] = useState(false);
 
     const [cellContents, setCellContents] = useState(
         Array.from({ length: boardData.board.rows }, () =>
@@ -213,6 +214,10 @@ const Board = ({ boardData, players, fetchBoardData }) => {
                     if (response.message) {
                         setGameEnded(true)
                         setWinningMessage(response.message)
+                    }
+                       // Check for a draw
+                    if (response.draw) {
+                        setIsDraw(true);
                     }
                     // You can update the frontend game state based on the response
                 })
@@ -300,8 +305,11 @@ const Board = ({ boardData, players, fetchBoardData }) => {
                 </div>
             ))}
 
-            {!winningMessage && (
+
+
+            {!winningMessage && !isDraw &&(
                 <p style={{ fontWeight: 'bold', marginTop: '10px' }}>
+
                     Current Player's Turn: {''}
                     {currentPlayer === 'x' && (
                         <img
@@ -345,6 +353,7 @@ const Board = ({ boardData, players, fetchBoardData }) => {
                                 style={imageStyle}
                             />
                             {players[0].player1Name}{' '}
+                            wins!
                         </>
                     )}
                     {winningMessage.includes('o') && (
@@ -356,9 +365,16 @@ const Board = ({ boardData, players, fetchBoardData }) => {
                                 style={imageStyle}
                             />
                             {players[0].player2Name}{' '}
+                            wins!
                         </>
                     )}
-                    wins!
+
+                </p>
+
+            )}
+            {isDraw && (
+                <p>
+                    The game is a draw!
                 </p>
             )}
             <NEWGAME>
