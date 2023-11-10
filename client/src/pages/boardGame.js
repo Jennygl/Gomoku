@@ -69,11 +69,6 @@ const BoardGame = () => {
         return <div>Loading...</div>
     }
 
-    // Reset the game board to its initial state
-    const handleNewGameClick = () => {
-        fetchBoardData()
-    }
-
     return (
         <div>
             <Body>
@@ -86,14 +81,18 @@ const BoardGame = () => {
                     </LanguageSwitchContainer>
                 </Header>
                 <div className="board-container">
-                    <Board boardData={boardData} players={players} />
+                    <Board
+                        boardData={boardData}
+                        players={players}
+                        fetchBoardData={fetchBoardData}
+                    />
 
                     <div className="right-container">
                         <div className="tab-newgame">
                             {boardData && (
                                 <Tabs boardData={boardData} players={players} />
                             )}
-                            <NewGameButton boardData={boardData} />
+                            {/* <NewGameButton /> */}
                         </div>
                         <DecorComp />
                     </div>
@@ -141,6 +140,18 @@ const Body = styled.div`
             flex-direction: column;
             justify-content: center;
             align-items: center;
+        }
+    }
+    @media (min-width: 330px) {
+        .board-cell {
+            width: 0.9rem;
+            height: 0.9rem;
+        }
+    }
+    @media (min-width: 520px) {
+        .board-cell {
+            width: 1.8rem;
+            height: 1.8rem;
         }
     }
 
