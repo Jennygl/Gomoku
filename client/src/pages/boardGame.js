@@ -88,12 +88,7 @@ const BoardGame = () => {
                     />
 
                     <div className="right-container">
-                        <div className="tab-newgame">
-                            {boardData && (
-                                <Tabs boardData={boardData} players={players} />
-                            )}
-                            {/* <NewGameButton /> */}
-                        </div>
+                        
                         <DecorComp />
                     </div>
                 </div>

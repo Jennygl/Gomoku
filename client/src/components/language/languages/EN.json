@@ -20,6 +20,8 @@
     "new_game_button": "New game",
     "player1": "Player 1",
     "player2": "Player 2",
-    "column": "Column",
-    "row":"Row"
+    "column": "Columns",
+    "row":"Rows",
+    "win":"wins",
+    "whos_turn":"Current Player's Turn"
 }

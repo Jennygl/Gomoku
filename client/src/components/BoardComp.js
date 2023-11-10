@@ -159,6 +159,7 @@ import React, { useState } from 'react'
 import player1 from '../assets/player1.png'
 import player2 from '../assets/player2.png'
 import styled from 'styled-components'
+import TabComp from './TabComp'
 import { useLanguage } from './language/LanguageContext'
 import se from '../components/language/languages/SE.json'
 import en from '../components/language/languages/EN.json'
@@ -275,6 +276,7 @@ const Board = ({ boardData, players, fetchBoardData }) => {
     }
 
     return (
+        <PageCont>
         <div className="board">
             {boardData.board.tiles.map((row, rowIndex) => (
                 <div className="board-row" key={rowIndex}>
@@ -310,7 +312,7 @@ const Board = ({ boardData, players, fetchBoardData }) => {
             {!winningMessage && !isDraw &&(
                 <p style={{ fontWeight: 'bold', marginTop: '10px' }}>
 
-                    Current Player's Turn: {''}
+{lang.whos_turn}: {''}
                     {currentPlayer === 'x' && (
                         <img
                             src={player1}
@@ -353,7 +355,7 @@ const Board = ({ boardData, players, fetchBoardData }) => {
                                 style={imageStyle}
                             />
                             {players[0].player1Name}{' '}
-                            wins!
+
                         </>
                     )}
                     {winningMessage.includes('o') && (
@@ -365,30 +367,54 @@ const Board = ({ boardData, players, fetchBoardData }) => {
                                 style={imageStyle}
                             />
                             {players[0].player2Name}{' '}
-                            wins!
+
                         </>
                     )}
 
+{lang.win}!
                 </p>
-
             )}
             {isDraw && (
                 <p>
                     The game is a draw!
                 </p>
             )}
+            </div>
             <NEWGAME>
+            <TabComp boardData={boardData} players={players}></TabComp>
                 <button className="new-game" onClick={clearBoard}>
                     {lang.new_game_button}
                 </button>
             </NEWGAME>
-        </div>
+            </PageCont>
     )
 }
 
 export default Board
-
+const PageCont = styled.div`
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    @media (max-width: 992px) {
+        flex-direction: column;
+    }
+    .board {
+        @media (max-width: 992px) {
+            align-self: center;
+        }
+    }
+    /* .board {
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: column;
+    } */
+`
 const NEWGAME = styled.div`
+display: flex;
+    flex-direction: column;
+    @media (max-width: 992px) {
+        flex-direction: column-reverse;
+    }
     .new-game {
         background-color: rgba(103, 160, 69, 0.46);
         width: 30vw;
@@ -406,6 +432,7 @@ const NEWGAME = styled.div`
             width: 80vw;
             margin-bottom: 30px;
             height: 7vh;
+            align-self: center;
         }
     }
 `

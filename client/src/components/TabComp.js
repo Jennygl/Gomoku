@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import RulesContent from './RulesContent'
 import AboutGomoku from './AboutGomoku'
+import DecorComp from './DecorComp'
 import { SettingsContent } from './SettingsContent'
 import { useLanguage } from './language/LanguageContext'
 import se from '../components/language/languages/SE.json'
@@ -173,6 +174,7 @@ const TabSection = styled.div`
     width: 30vw;
     @media (max-width: 992px) {
         width: 80vw;
+        align-self: center;
     }
 `
 const TabContentSection = styled.div`
@@ -186,6 +188,7 @@ const TabContentSection = styled.div`
     word-break: break-word;
     @media (max-width: 992px) {
         width: 80vw;
+        align-self: center;
     }
     .gameInfo {
         margin: 1em;
